@@ -29,11 +29,16 @@
 // Related Topics 贪心算法 数组
 
 package editor.cn;
+
+import java.util.HashMap;
+import java.util.Map;
+
 //Java：买卖股票的最佳时机 II
 public class P122BestTimeToBuyAndSellStockIi{
     public static void main(String[] args) {
         Solution solution = new P122BestTimeToBuyAndSellStockIi().new Solution();
         // TO TEST
+        Map<String, String> map = new HashMap<>();
     }
     
 
