@@ -22,46 +22,31 @@ public class P5LongestPalindromicSubstring{
         Solution solution = new P5LongestPalindromicSubstring().new Solution();
         // TO TEST
         System.out.println(solution.longestPalindrome("babad"));
-        System.out.println(solution.longestPalindrome("bab"));
-        System.out.println(solution.longestPalindrome("aba"));
-        System.out.println(solution.longestPalindrome("baabcsdasbad"));
-        System.out.println(solution.longestPalindrome("abcfgcba"));
-        System.out.println(solution.longestPalindrome("text"));
+        System.out.println(solution.longestPalindrome("aabbasds"));
+        System.out.println(solution.longestPalindrome("abcfggfca"));
+        System.out.println(solution.longestPalindrome("xcvcxz"));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public String longestPalindrome(String s) {
-        int len = s.length();
-        if (len < 2)
+        if (null == s || s.length() < 2)
             return s;
-        String res = "";
-        for (int i = 0; i < len; i++) {
-            String tmp = expandString(i, s);
-            res = res.length() > tmp.length() ? res : tmp;
-        }
-        return res;
-    }
-
-    public String expandString(int index, String s) {
-        int left = index, right = index;
-        while (left > 0 && right < s.length() - 1) {
-             if (s.charAt(--left) != s.charAt(++right)) {
-                 left++;
-                 right--;
-                 break;
-             }
-        }
-        int left2 = index, right2 = left2 + 1;
-        while (left2 > 0 && right2 < s.length() - 1) {
-            if (s.charAt(--left2) != s.charAt(++right2)) {
-                left2++;
-                right2--;
-                break;
+        int resL = 0, resR = 0;
+        int maxLen = 1;
+        boolean dp[][] = new boolean[s.length()][s.length()];
+        for (int r = 1; r < s.length(); r++) {
+            for (int l = 0; l < r; l++) {  // 遍历出所有可能的字符串
+                if (s.charAt(l) == s.charAt(r) && ((r - l) <= 2 || dp[l+1][r-1])) {
+                    dp[l][r] = true;
+                    if (maxLen < r - l + 1) {
+                        maxLen = r - l + 1;
+                        resL = l;
+                        resR = r;
+                    }
+                }
             }
         }
-        if (right2 - left2 > right - left)
-            return s.substring(left2, right2);
-        return s.substring(left, right);
+        return s.substring(resL, resR + 1);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
