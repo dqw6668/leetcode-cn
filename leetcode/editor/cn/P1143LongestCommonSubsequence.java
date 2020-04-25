@@ -47,7 +47,7 @@ import java.util.Arrays;
 
 //Java：最长公共子序列
 public class P1143LongestCommonSubsequence{
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Solution solution = new P1143LongestCommonSubsequence().new Solution();
         // TO TEST
         System.out.println(solution.longestCommonSubsequence("abc","def"));
