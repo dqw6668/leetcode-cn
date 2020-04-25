@@ -63,45 +63,44 @@ public class P887SuperEggDrop{
         System.out.println("耗时" + (System.currentTimeMillis() - startTimes));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int superEggDrop(int K, int N) {
-        // k个鸡蛋还要扔n层楼的次数解
-        int[][] dp = new int[K+1][N+1];
-        for (int i = 0; i <= K; i++) {
-            for (int j = 0; j <= N; j++) {
-                dp[i][j] = N;
-            }
-        }
-        for (int i = 0; i <= N; i++) {
-            dp[0][i] = 0;
-            dp[1][i] = i;
-        }
-        for (int i = 0; i <= K; i++) {
-            dp[i][1] = 1;
-            dp[i][0] = 0;
-        }
-        int res = Integer.MAX_VALUE;
-        for (int i = 2; i <= K; i++) {
-            // 遍历所有N层楼
-            for (int j = 2; j <= N; j++) {
-                // 对求当前的楼层数，从第k层扔
-                int l = 1, r = j;
-                while (l < r) {
-                    int mid = l + (r - l + 1) / 2;
-                    int breakFloor = dp[i - 1][mid - 1];
-                    int notBreakFloor = dp[i][j - mid];
-                    if (breakFloor > notBreakFloor) {
-                        r = mid - 1;
-                    }
-                    else
-                        l = mid;
+    class Solution {
+        public int superEggDrop(int K, int N) {
+            // k个鸡蛋还要扔n层楼的次数解
+            int[][] dp = new int[K+1][N+1];
+            for (int i = 0; i <= K; i++) {
+                for (int j = 0; j <= N; j++) {
+                    dp[i][j] = N;
                 }
-                dp[i][j] = Math.min(Math.max(dp[i - 1][l - 1], dp[i][j - l]) + 1, dp[i][j]);
             }
+            for (int i = 0; i <= N; i++) {
+                dp[0][i] = 0;
+                dp[1][i] = i;
+            }
+            for (int i = 0; i <= K; i++) {
+                dp[i][1] = 1;
+                dp[i][0] = 0;
+            }
+            for (int i = 2; i <= K; i++) {
+                // 遍历所有N层楼
+                for (int j = 2; j <= N; j++) {
+                    // 对求当前的楼层数，从第k层扔
+                    int l = 1, r = j;
+                    while (l < r) {
+                        int mid = l + (r - l + 1) / 2;
+                        int breakFloor = dp[i - 1][mid - 1];
+                        int notBreakFloor = dp[i][j - mid];
+                        if (breakFloor > notBreakFloor) {
+                            r = mid - 1;
+                        }
+                        else
+                            l = mid;
+                    }
+                    dp[i][j] = Math.min(Math.max(dp[i - 1][l - 1], dp[i][j - l]) + 1, dp[i][j]);
+                }
+            }
+            return dp[K][N];
         }
-        return dp[K][N];
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
