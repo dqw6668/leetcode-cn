@@ -65,7 +65,6 @@ public class P887SuperEggDrop{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int superEggDrop(int K, int N) {
-        // TODO base
         // k个鸡蛋还要扔n层楼的次数解
         int[][] dp = new int[K+1][N+1];
         for (int i = 0; i <= K; i++) {
