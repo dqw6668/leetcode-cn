@@ -1,4 +1,4 @@
-package editor.cn;
+package editor.cn.dp;
 
 public class P651_4KeysKeyboard {
     public static void main(String[] args) {

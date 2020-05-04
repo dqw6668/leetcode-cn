@@ -23,7 +23,7 @@
 // Related Topics 双指针 字符串
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：实现 strStr()
 public class P28ImplementStrstr{
     public static void main(String[] args) {

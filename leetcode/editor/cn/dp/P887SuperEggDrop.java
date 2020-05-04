@@ -49,9 +49,7 @@
 // Related Topics 数学 二分查找 动态规划
 
 
-package editor.cn;
-
-import java.util.Arrays;
+package editor.cn.dp;
 
 //Java：鸡蛋掉落
 public class P887SuperEggDrop{

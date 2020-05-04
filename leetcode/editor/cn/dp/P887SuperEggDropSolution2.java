@@ -1,4 +1,4 @@
-package editor.cn;
+package editor.cn.dp;
 
 public class P887SuperEggDropSolution2 {
     public static void main(String[] args) {

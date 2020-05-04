@@ -34,7 +34,7 @@
 // Related Topics 字符串 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：编辑距离
 public class P72EditDistance{
     public static void main(String[] args) {

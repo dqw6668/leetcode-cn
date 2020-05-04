@@ -34,7 +34,7 @@
 // Related Topics 极小化极大 数学 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：石子游戏
 public class P877StoneGame{
     public static void main(String[] args) {

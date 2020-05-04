@@ -23,7 +23,7 @@
 // Related Topics 数组 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：买卖股票的最佳时机
 public class P121BestTimeToBuyAndSellStock{
     public static void main(String[] args) {

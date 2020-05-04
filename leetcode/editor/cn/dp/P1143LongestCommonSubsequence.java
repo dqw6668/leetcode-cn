@@ -41,7 +41,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 
 import java.util.Arrays;
 

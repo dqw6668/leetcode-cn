@@ -32,7 +32,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：最长回文子序列
 public class P516LongestPalindromicSubsequence{
     public static void main(String[] args) {
