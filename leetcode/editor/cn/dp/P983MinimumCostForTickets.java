@@ -53,7 +53,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：最低票价
 public class P983MinimumCostForTickets{
     public static void main(String[] args) {
