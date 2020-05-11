@@ -64,11 +64,40 @@ public class P10RegularExpressionMatching{
     public static void main(String[] args) {
         Solution solution = new P10RegularExpressionMatching().new Solution();
         // TO TEST
+        System.out.println(solution.isMatch("a", "a*"));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean isMatch(String s, String p) {
+        if (null == s  && null == p)
+            return true;
+        else if (p == null)
+            return false;
+        int row = s.length();
+        int column = p.length();
+        // i,j定义为前i,j个字符而不是下标
+        boolean[][] dp = new boolean[row+1][column+1];
+        dp[0][0] = true;
+        for (int j = 1; j <= column; j++) {
+            if (p.charAt(j-1) == '*' && dp[0][j-2])
+                dp[0][j] = true;
+        }
 
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= column; j++) {
+                if (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.')
+                    dp[i][j] = dp[i-1][j-1];
+                else if (p.charAt(j-1) == '*') {
+                    if (p.charAt(j-2) == s.charAt(i-1) || p.charAt(j-2) == '.')
+                        dp[i][j] = dp[i-1][j] || dp[i][j-1];
+                    dp[i][j] = dp[i][j] || dp[i][j-2];
+                }
+                else
+                    dp[i][j] = false;
+
+            }
+        }
+        return dp[row][column];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
