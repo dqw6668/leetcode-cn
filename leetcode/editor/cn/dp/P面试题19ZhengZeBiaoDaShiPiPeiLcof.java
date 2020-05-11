@@ -55,48 +55,49 @@
 
 
 package editor.cn.dp;
+
 //Java：正则表达式匹配
-public class P面试题19ZhengZeBiaoDaShiPiPeiLcof{
+public class P面试题19ZhengZeBiaoDaShiPiPeiLcof {
     public static void main(String[] args) {
         Solution solution = new P面试题19ZhengZeBiaoDaShiPiPeiLcof().new Solution();
         // TO TEST
         System.out.println(solution.isMatch("aa", "a*"));
     }
+
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isMatch(String s, String p) {
-        if (null == s && null == p)
-            return true;
-        else if (null == p)
-            return false;
-        int rows= s.length();
-        int columns = p.length();
-        // i,j定义为前i,j个字符而不是下标
-        boolean[][] dp = new boolean[rows+1][columns+1];
-        // TODO base状态 遍历边界
-        dp[0][0] = true;
-        for(int j=1;j<=columns;j++)
-        {
-            //p[j-1]为*可以把j-2和j-1处的字符删去，只有[0,j-3]都为true才可以
-            //因此dp[j-2]也要为true，才可以说明前j个为true
-            if(p.charAt(j-1)=='*'&&dp[0][j-2])
-                dp[0][j] = true;
-        }
-        for (int i = 1; i <= rows; i++) {
+    class Solution {
+        public boolean isMatch(String s, String p) {
+            if (null == s && null == p)
+                return true;
+            else if (null == p)
+                return false;
+            int rows = s.length();
+            int columns = p.length();
+            // i,j定义为前i,j个字符而不是下标
+            boolean[][] dp = new boolean[rows + 1][columns + 1];
+            // TODO base状态 遍历边界
+            dp[0][0] = true;
             for (int j = 1; j <= columns; j++) {
-                if (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.')
-                    dp[i][j] = dp[i-1][j-1];
-                else if (p.charAt(j-1) == '*' && j >= 2) {
-                        if (p.charAt(j-2) == s.charAt(i-1) || p.charAt(j-2) == '.')
-                            dp[i][j] = dp[i-1][j] || dp[i][j-1];
-                        dp[i][j] = dp[i][j] || dp[i][j-2];
-                } else
-                    dp[i][j] = false;
+                //p[j-1]为*可以把j-2和j-1处的字符删去，只有[0,j-3]都为true才可以
+                //因此dp[j-2]也要为true，才可以说明前j个为true
+                if (p.charAt(j - 1) == '*' && dp[0][j - 2])
+                    dp[0][j] = true;
             }
+            for (int i = 1; i <= rows; i++) {
+                for (int j = 1; j <= columns; j++) {
+                    if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.')
+                        dp[i][j] = dp[i - 1][j - 1];
+                    else if (p.charAt(j - 1) == '*' && j >= 2) {
+                        if (p.charAt(j - 2) == s.charAt(i - 1) || p.charAt(j - 2) == '.')
+                            dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
+                        dp[i][j] = dp[i][j] || dp[i][j - 2];
+                    } else
+                        dp[i][j] = false;
+                }
+            }
+            return dp[rows][columns];
         }
-        return dp[rows][columns];
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
