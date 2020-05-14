@@ -13,7 +13,7 @@
 // Related Topics 数组 分治算法 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：最大子序和
 public class P53MaximumSubarray{
     public static void main(String[] args) {
