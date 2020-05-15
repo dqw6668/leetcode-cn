@@ -16,7 +16,7 @@
 // Related Topics 数组 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 
 //Java：最小路径和
 public class P64MinimumPathSum {
