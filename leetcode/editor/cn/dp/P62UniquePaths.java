@@ -37,7 +37,10 @@
 // Related Topics 数组 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
+
+import java.util.Arrays;
+
 //Java：不同路径
 public class P62UniquePaths{
     public static void main(String[] args) {
@@ -48,7 +51,7 @@ public class P62UniquePaths{
         System.out.println(solution.uniquePaths(10,1));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution2 {
     public int uniquePaths(int m, int n) {
         if (m <= 0 || n <= 0) {
             return 0;
@@ -68,6 +71,22 @@ class Solution {
         return dp[m][n];
     }
 }
+
+    class Solution {
+        public int uniquePaths(int m, int n) {
+            if (m <= 0 || n <= 0) {
+                return 0;
+            }
+            int[] dp = new int[n];
+            Arrays.fill(dp, 1);
+            for (int i = 1; i < m; i++) {
+                for (int j = 1; j < n; j++) {
+                    dp[j] += dp[j-1];
+                }
+            }
+            return dp[n-1];
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
