@@ -31,7 +31,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：分割等和子集
 public class P416PartitionEqualSubsetSum{
     public static void main(String[] args) {
