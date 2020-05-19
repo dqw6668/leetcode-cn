@@ -27,11 +27,12 @@ public class P279PerfectSquares {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        ArrayList<Integer> dp = new ArrayList<>();
+        static ArrayList<Integer> dp = new ArrayList<>();
 
         public int numSquares(int n) {
-            dp.add(0);
-            if (dp.size() < n) {
+            if (dp.size() == 0)
+                dp.add(0);
+            if (dp.size() <= n) {
                 for (int i = dp.size(); i <= n; i++) {
                     int min = i;
                     for (int j = 1; j * j <= i; j++) {
