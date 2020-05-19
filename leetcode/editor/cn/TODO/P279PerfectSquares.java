@@ -27,7 +27,7 @@ public class P279PerfectSquares {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        static ArrayList<Integer> dp = new ArrayList<>();
+        ArrayList<Integer> dp = new ArrayList<>();
 
         public int numSquares(int n) {
             if (dp.size() == 0)
