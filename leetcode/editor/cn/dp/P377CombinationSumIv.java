@@ -30,7 +30,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 
 //Java：组合总和 Ⅳ
 public class P377CombinationSumIv {
