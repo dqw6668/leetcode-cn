@@ -31,7 +31,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn.TODO;
+package editor.cn.dp;
 
 //Java：一和零
 public class P474OnesAndZeroes {
