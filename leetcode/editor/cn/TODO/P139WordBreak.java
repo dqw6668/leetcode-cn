@@ -31,7 +31,11 @@
 
 
 package editor.cn.TODO;
+
+import java.util.List;
+
 //Java：单词拆分
+//date 2020年5月22日
 public class P139WordBreak{
     public static void main(String[] args) {
         Solution solution = new P139WordBreak().new Solution();
@@ -40,7 +44,24 @@ public class P139WordBreak{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
-
+        /**
+         * 明确状态
+         * dp[i]表示 s[0..i]可以拆分出提供的word
+         * i表示长度而非下标
+         */
+        boolean[] dp = new boolean[s.length() + 1];
+        // base状态 dp[0] s为空，true
+        dp[0] = true;
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 0; j <= i; j++) {
+                //状态转移
+                if (dp[j] && wordDict.contains(s.substring(j, i))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
