@@ -28,7 +28,7 @@
 // Related Topics 深度优先搜索 动态规划
 
 
-package editor.cn;
+package editor.cn.TODO;
 //Java：目标和
 public class P494TargetSum{
     public static void main(String[] args) {
