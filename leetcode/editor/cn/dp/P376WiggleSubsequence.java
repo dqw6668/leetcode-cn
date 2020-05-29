@@ -28,7 +28,7 @@
 // Related Topics 贪心算法 动态规划
 
 
-package editor.cn.TODO;
+package editor.cn.dp;
 
 //Java：摆动序列
 public class P376WiggleSubsequence {
