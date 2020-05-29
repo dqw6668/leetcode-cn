@@ -29,18 +29,39 @@
 
 
 package editor.cn.TODO;
+
 //Java：目标和
-public class P494TargetSum{
+//Date 2020年5月29日
+public class P494TargetSum {
     public static void main(String[] args) {
         Solution solution = new P494TargetSum().new Solution();
         // TO TEST
     }
-    //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int findTargetSumWays(int[] nums, int S) {
 
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int findTargetSumWays(int[] nums, int S) {
+            //如果所有数的和小于目标值，则无法达到返回0
+            int sum = 0;
+            for (int i = 0; i < nums.length; i++) {
+                sum += nums[i];
+            }
+            if (sum < Math.abs(S))
+                return 0;
+
+            // 定义dp含义i表示nums{0...i}中的数，组合成j的方法数
+            // 由于可以选择减法，组合范围为-sum,+sum，而下标没有负数，则用j=sum时的下标表示和为0,那么j=0表示和为-sum，最终结果为sum+s
+            int[][] dp = new int[nums.length][2 * sum + 1];
+            dp[0][sum + nums[0]] = 1;
+            dp[0][sum - nums[0]] += 1;
+            for (int i = 1; i < nums.length; i++) {
+                for (int j = 0; j < 2 * sum + 1; j++) {
+
+                }
+            }
+
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
