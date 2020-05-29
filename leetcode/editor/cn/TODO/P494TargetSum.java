@@ -36,6 +36,7 @@ public class P494TargetSum {
     public static void main(String[] args) {
         Solution solution = new P494TargetSum().new Solution();
         // TO TEST
+        System.out.println(solution.findTargetSumWays(new int[]{1,1,1,1,1},3));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -56,10 +57,10 @@ public class P494TargetSum {
             dp[0][sum - nums[0]] += 1;
             for (int i = 1; i < nums.length; i++) {
                 for (int j = 0; j < 2 * sum + 1; j++) {
-
+                    dp[i][j] = dp[i - 1][j - nums[i] > 0 ? j - nums[i] : 0] + dp[i - 1][j + nums[i] < 2 * sum + 1 ? j + nums[i] : 0];
                 }
             }
-
+            return dp[nums.length - 1][sum + S];
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
