@@ -29,18 +29,39 @@
 
 
 package editor.cn.TODO;
+
 //Java：摆动序列
-public class P376WiggleSubsequence{
+public class P376WiggleSubsequence {
     public static void main(String[] args) {
         Solution solution = new P376WiggleSubsequence().new Solution();
         // TO TEST
     }
-    //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int wiggleMaxLength(int[] nums) {
 
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int wiggleMaxLength(int[] nums) {
+            if (nums.length < 2)
+                return nums.length;
+            //当选择一个元素nums[i]结尾时，要么上升要么下降,用两个dp数组分别记录以dp[i]结尾的上升或下降摆动序列的长度
+            int[] up = new int[nums.length];
+            int[] down = new int[nums.length];
+            up[0] = 1;
+            down[0] = 1;
+            for (int i = 1; i < nums.length; i++) {
+                for (int j = 0; j < i; j++) {
+                    if (nums[i] > nums[j])
+                        up[i] = Math.max(up[i], down[j] + 1);
+                    else if (nums[i] < nums[j])
+                        down[i] = Math.max(down[i], up[j] + 1);
+                    else {
+                        up[i] = Math.max(up[i], up[i - 1]);
+                        down[i] = Math.max(down[i], down[i - 1]);
+                    }
+                }
+            }
+            return Math.max(up[nums.length - 1], down[nums.length - 1]);
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
