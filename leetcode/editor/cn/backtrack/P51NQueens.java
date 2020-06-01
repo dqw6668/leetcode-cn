@@ -36,7 +36,7 @@
 // Related Topics 回溯算法
 
 
-package editor.cn;
+package editor.cn.backtrack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
