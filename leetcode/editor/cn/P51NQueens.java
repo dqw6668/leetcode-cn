@@ -49,28 +49,28 @@ public class P51NQueens {
     public static void main(String[] args) {
         Solution solution = new P51NQueens().new Solution();
         // TO TEST
+        System.out.println(solution.solveNQueens(4));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         // 题目需要返回的res
-        List<List<String>> res;
+        List<List<String>> res = new ArrayList<>();
 
         public List<List<String>> solveNQueens(int n) {
             // 特判
             if (n < 1) return res;
             // 该list中的每一个int表示，每一行的第i列放皇后,一个queen表示一种棋盘解
             List<Integer> queen = new LinkedList<>();
-            // 从第0行开始寻求解
+            // 从第0行开始寻求解,一行一行的往下放
             backtrack(0, n, queen);
             return res;
         }
 
         /**
-         *
          * @param index 表示当前选择的行
          * @param n
-         * @param queen
+         * @param queen 当前已经摆放好的棋盘
          */
         public void backtrack(int index, int n, List<Integer> queen) {
             // 写递归，先写终止条件
@@ -85,10 +85,34 @@ public class P51NQueens {
                 res.add(tmp);
                 return;
             }
-            // 做选择
-            for (int i = index; i < n; i++) {
-
+            // 做选择,对当前行的每一列进行尝试放皇后
+            for (int col = 0; col < n; col++) {
+                // 判断每一列上放的皇后
+                if (!queen.contains(col)) {
+                    // 判断两个对角线
+                    if (!isDiagonalAttack(queen, col)) {
+                        // 把当前列也放入棋盘
+                        queen.add(col);
+                        // 递归
+                        backtrack(index + 1, n, queen);
+                        // 回溯
+                        queen.remove(queen.size() - 1);
+                    }
+                }
             }
+        }
+
+        private boolean isDiagonalAttack(List<Integer> currentQueen, int i) {
+            int currentRow = currentQueen.size();
+            int currentCol = i;
+            //判断每一行的皇后的情况
+            for (int row = 0; row < currentQueen.size(); row++) {
+                //左上角的对角线和右上角的对角线，两点间构成的斜率应该为45°
+                if (Math.abs(currentRow - row) == Math.abs(currentCol - currentQueen.get(row))) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
