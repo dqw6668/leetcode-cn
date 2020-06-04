@@ -39,18 +39,32 @@
 
 
 package editor.cn;
+
 //Java：删除排序数组中的重复项 II
-public class P80RemoveDuplicatesFromSortedArrayIi{
+public class P80RemoveDuplicatesFromSortedArrayIi {
     public static void main(String[] args) {
         Solution solution = new P80RemoveDuplicatesFromSortedArrayIi().new Solution();
         // TO TEST
     }
-    //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int removeDuplicates(int[] nums) {
 
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int removeDuplicates(int[] nums) {
+            int len = nums.length;
+            if (len < 2) return len;
+            int count = 1, j = 1;
+            for (int i = 1; i < len; i++) {
+                if (nums[i] == nums[i - 1])
+                    count++;
+                else
+                    count = 1;
+                // 如果遇到不同的数 或者第二个相同的数
+                if (count <= 2)
+                    nums[j++] = nums[i];
+            }
+            return j;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
