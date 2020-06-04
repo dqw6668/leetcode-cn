@@ -38,7 +38,7 @@
 // Related Topics 数组 双指针
 
 
-package editor.cn;
+package editor.cn.array;
 
 //Java：删除排序数组中的重复项 II
 public class P80RemoveDuplicatesFromSortedArrayIi {

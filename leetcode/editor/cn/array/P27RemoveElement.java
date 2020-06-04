@@ -48,7 +48,7 @@
 // Related Topics 数组 双指针
 
 
-package editor.cn;
+package editor.cn.array;
 //Java：移除元素
 public class P27RemoveElement{
     public static void main(String[] args) {
