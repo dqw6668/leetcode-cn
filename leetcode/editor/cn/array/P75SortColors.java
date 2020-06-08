@@ -20,10 +20,7 @@
 // Related Topics 排序 数组 双指针
 
 
-package editor.cn;
-
-import java.util.Arrays;
-import java.util.Collections;
+package editor.cn.array;
 
 //Java：颜色分类
 public class P75SortColors{
