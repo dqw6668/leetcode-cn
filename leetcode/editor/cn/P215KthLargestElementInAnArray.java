@@ -18,11 +18,16 @@
 
 
 package editor.cn;
+
+import java.util.Random;
+
 //Java：数组中的第K个最大元素
 public class P215KthLargestElementInAnArray{
     public static void main(String[] args) {
         Solution solution = new P215KthLargestElementInAnArray().new Solution();
         // TO TEST
+        int[] nums = new int[]{3,2,3,1,2,4,5,5,6};
+        System.out.println(solution.findKthLargest(nums, 4));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
@@ -51,7 +56,11 @@ class Solution {
          * @return 返回nums[left]排序后正确的下标
          */
     public int partition(int[] nums, int left, int right) {
-
+        // 考虑极端的情况,pivot需要随机选取
+        if (right > left) {
+            int randomIndex = new Random().nextInt(right - left) + 1;
+            swp(nums, left, left + randomIndex);
+        }
         int pivot = nums[left];
         int j = left;
         // nums[left+1..j]的数 < pivot
