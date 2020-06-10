@@ -27,7 +27,48 @@ public class P215KthLargestElementInAnArray{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int findKthLargest(int[] nums, int k) {
+        int len = nums.length;
+        // 要找第k个数
+        int kth = len - k;
+        int left = 0;
+        int right = len - 1;
+        while (true) {
+            int res = partition(nums, left, right);
+            if (res == kth)
+                return nums[res];
+            else if (res < kth)
+                left = res + 1;
+            else
+                right = res - 1;
+        }
+    }
 
+        /**
+         * 在数组nums[left..right]中partition寻找下标left排序后正确的位置
+         * @param nums
+         * @param left
+         * @param right
+         * @return 返回nums[left]排序后正确的下标
+         */
+    public int partition(int[] nums, int left, int right) {
+
+        int pivot = nums[left];
+        int j = left;
+        // nums[left+1..j]的数 < pivot
+        for (int i = left + 1; i <= right; i++) {
+            if (nums[i] < pivot)
+                swp(nums, i, ++j);
+        }
+        // 此时pivot下标为left
+        swp(nums, left, j);
+        // swp后nums[left..j-1] < pivot  nums[j] = pivot, nums[j+1..right] >= pivot
+        return j;
+    }
+
+    public void swp(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
