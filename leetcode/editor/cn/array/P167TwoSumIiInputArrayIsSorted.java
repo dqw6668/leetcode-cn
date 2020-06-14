@@ -17,7 +17,7 @@
 // Related Topics 数组 双指针 二分查找
 
 
-package editor.cn.TODO;
+package editor.cn.array;
 //Java：两数之和 II - 输入有序数组
 public class P167TwoSumIiInputArrayIsSorted{
     public static void main(String[] args) {
