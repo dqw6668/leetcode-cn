@@ -25,7 +25,7 @@
 //
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：数组中数字出现的次数
 public class P56IShuZuZhongShuZiChuXianDeCiShuLcof{
     public static void main(String[] args) {

@@ -22,7 +22,7 @@
 // Related Topics 数组 二分查找 分治算法
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：寻找两个有序数组的中位数
 public class P4MedianOfTwoSortedArrays{
     public static void main(String[] args) {

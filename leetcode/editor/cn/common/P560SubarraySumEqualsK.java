@@ -16,7 +16,7 @@
 // Related Topics 数组 哈希表
 
 
-package editor.cn;
+package editor.cn.common;
 
 //Java：和为K的子数组
 public class P560SubarraySumEqualsK {

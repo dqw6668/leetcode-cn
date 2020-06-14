@@ -12,7 +12,7 @@
 // Related Topics 数组 哈希表
 
 
-package editor.cn;
+package editor.cn.common;
 
 import java.util.HashMap;
 import java.util.Map;

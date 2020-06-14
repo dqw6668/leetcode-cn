@@ -20,7 +20,7 @@
 // Related Topics 贪心算法
 
 
-package editor.cn;
+package editor.cn.common;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -15,7 +15,7 @@
 // Related Topics 字符串 动态规划
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：最长回文子串
 public class P5LongestPalindromicSubstring{
     public static void main(String[] args) {

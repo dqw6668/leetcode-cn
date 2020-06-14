@@ -18,7 +18,7 @@
 // Related Topics 贪心算法 数组
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：跳跃游戏 II
 public class P45JumpGameIi{
     public static void main(String[] args) {

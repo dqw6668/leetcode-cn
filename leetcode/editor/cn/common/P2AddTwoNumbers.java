@@ -13,7 +13,7 @@
 // Related Topics 链表 数学
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：两数相加
 public class P2AddTwoNumbers{
     public static void main(String[] args) {

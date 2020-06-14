@@ -14,9 +14,7 @@
 // Related Topics 数组 双指针
 
 
-package editor.cn;
-
- import java.util.Arrays;
+package editor.cn.common;
 
  //Java：移动零
 public class P283MoveZeroes{

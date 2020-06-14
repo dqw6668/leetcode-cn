@@ -24,7 +24,7 @@
 // Related Topics 哈希表 双指针 字符串 Sliding Window
 
 
-package editor.cn;
+package editor.cn.common;
 
 import java.util.HashMap;
 import java.util.Map;

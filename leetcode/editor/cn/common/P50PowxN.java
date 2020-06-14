@@ -27,7 +27,7 @@
 // Related Topics 数学 二分查找
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：Pow(x, n)
 public class P50PowxN{
     public static void main(String[] args) {

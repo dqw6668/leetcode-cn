@@ -38,7 +38,7 @@
 // Related Topics 字符串
 
 
-package editor.cn;
+package editor.cn.common;
 
 import java.util.Arrays;
 
