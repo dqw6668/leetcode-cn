@@ -21,7 +21,7 @@
 // Related Topics 数组 双指针
 
 
-package editor.cn;
+package editor.cn.array;
 
 //Java：合并两个有序数组
 public class P88MergeSortedArray {

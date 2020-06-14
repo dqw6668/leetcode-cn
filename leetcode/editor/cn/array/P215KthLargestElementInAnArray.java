@@ -17,7 +17,7 @@
 // Related Topics 堆 分治算法
 
 
-package editor.cn;
+package editor.cn.array;
 
 import java.util.Random;
 
