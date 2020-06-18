@@ -38,7 +38,7 @@ public class P464CanIWin{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        return false;
+        return true;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
