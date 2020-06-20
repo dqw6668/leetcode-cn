@@ -22,7 +22,7 @@
 // Related Topics 分治算法 动态规划
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：戳气球
 public class P312BurstBalloons{
     public static void main(String[] args) {
