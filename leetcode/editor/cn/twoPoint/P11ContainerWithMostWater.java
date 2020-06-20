@@ -18,7 +18,7 @@
 // Related Topics 数组 双指针
 
 
-package editor.cn;
+package editor.cn.twoPoint;
 //Java：盛最多水的容器
 public class P11ContainerWithMostWater{
     public static void main(String[] args) {
