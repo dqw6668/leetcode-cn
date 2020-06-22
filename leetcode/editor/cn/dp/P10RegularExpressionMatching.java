@@ -67,39 +67,46 @@ public class P10RegularExpressionMatching{
         System.out.println(solution.isMatch("a", "a*"));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean isMatch(String s, String p) {
-        if (null == s  && null == p)
-            return true;
-        else if (p == null)
-            return false;
-        int row = s.length();
-        int column = p.length();
-        // i,j定义为前i,j个字符而不是下标
-        boolean[][] dp = new boolean[row+1][column+1];
-        dp[0][0] = true;
-        for (int j = 1; j <= column; j++) {
-            if (p.charAt(j-1) == '*' && dp[0][j-2])
-                dp[0][j] = true;
-        }
-
-        for (int i = 1; i <= row; i++) {
+    class Solution {
+        public boolean isMatch(String s, String p) {
+            // 特判如果同时为空则匹配
+            if (null == s  && null == p)
+                return true;
+                // 如果匹配规则为空则不匹配
+            else if (p == null)
+                return false;
+            int row = s.length();
+            int column = p.length();
+            // 定义dp数组，i,j定义为前i,j个字符而不是下标，dp[i][j]表示s[..i]与p[..j]是否匹配
+            boolean[][] dp = new boolean[row+1][column+1];
+            dp[0][0] = true;
+            // base状态 将x*表示匹配0个，
             for (int j = 1; j <= column; j++) {
-                if (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.')
-                    dp[i][j] = dp[i-1][j-1];
-                else if (p.charAt(j-1) == '*') {
-                    if (p.charAt(j-2) == s.charAt(i-1) || p.charAt(j-2) == '.')
-                        dp[i][j] = dp[i-1][j] || dp[i][j-1];
-                    dp[i][j] = dp[i][j] || dp[i][j-2];
-                }
-                else
-                    dp[i][j] = false;
-
+                if (p.charAt(j-1) == '*' && dp[0][j-2])
+                    dp[0][j] = true;
             }
+            // 开始填表
+            for (int i = 1; i <= row; i++) {
+                for (int j = 1; j <= column; j++) {
+                    // 如果第i和第j个字符相同，则取决于上一轮匹配不
+                    if (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.')
+                        dp[i][j] = dp[i-1][j-1];
+                        // 遇到p[j]为*的情况,可以有让x*去 匹配0个，匹配1个，匹配多个
+                    else if (p.charAt(j-1) == '*') {
+                        // 看*前面一个字符是否相同
+                        if (p.charAt(j-2) == s.charAt(i-1) || p.charAt(j-2) == '.')
+                            // 若相同 则可以匹配多个 那么i-1 或 只匹配一个 那么j-1去掉了*
+                            dp[i][j] = dp[i-1][j] || dp[i][j-1];
+                        // 还可以匹配0个，跳过x*，那么j-2
+                        dp[i][j] = dp[i][j] || dp[i][j-2];
+                    }
+                    else
+                        dp[i][j] = false;
+                }
+            }
+            return dp[row][column];
         }
-        return dp[row][column];
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
