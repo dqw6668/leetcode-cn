@@ -34,7 +34,7 @@
 //        结果不会超过 32 位有符号整数范围。
 
 
-package editor.cn.common;
+package editor.cn.dp;
 
 //Java： 4键键盘
 public class P651sijianjianpan {
