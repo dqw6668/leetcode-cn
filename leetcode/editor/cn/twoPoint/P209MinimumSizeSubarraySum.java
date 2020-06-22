@@ -14,7 +14,7 @@
 // Related Topics 数组 双指针 二分查找
 
 
-package editor.cn;
+package editor.cn.twoPoint;
 //Java：长度最小的子数组
 public class P209MinimumSizeSubarraySum{
     public static void main(String[] args) {
