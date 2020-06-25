@@ -16,6 +16,8 @@
 
 package editor.cn;
 
+import java.util.Arrays;
+
 //Java：最小覆盖子串
 public class P76MinimumWindowSubstring {
     public static void main(String[] args) {
@@ -31,24 +33,43 @@ public class P76MinimumWindowSubstring {
             // 特判
             if (null == s || null == t)
                 return "";
-            int resl = 0, resr = t.length();
-            // 双指针
-            int left = 0, right = 0;
+            // 初始结果
+            int resl = 0, resr = s.length() + 1;
+            // 滑动窗口[left..right],初始时窗口内为空
+            int left = 0, right = -1;
             // 计数t中所有字符个数
             int count = t.length();
             // 计数t中字符出现次数
             int[] hash = new int[256];
+            // 不是我们要找的字符设为无效值
+            Arrays.fill(hash, Integer.MAX_VALUE);
+            // 要找的字符次数初始化
             for (int i = 0; i < t.length(); i++) {
-                hash[t.charAt(i)]++;
+                if (hash[t.charAt(i)] == Integer.MAX_VALUE)
+                    hash[t.charAt(i)] = 1;
+                else
+                    hash[t.charAt(i)]++;
             }
-            while (right < s.length()) {
+            while (right < s.length() - 1) {
+                // right右移,找到一个，要查找数减一
+                right++;
                 // 意味着下标right的字符是要找的
-                if (hash[s.charAt(right)] > 0)
-                    count--;
+                if (hash[s.charAt(right)] != Integer.MAX_VALUE) {
+                    // 当要查找的字符没有多余时
+                    if (hash[s.charAt(right)] > 0) {
+                        count--;
+                    }
+                    // 要找的字符数减一
+                    hash[s.charAt(right)]--;
+                }
                 // 找完时，可能有多余的left字符，需要left收缩去除
                 if (count == 0) {
-                    while (hash[s.charAt(left)] < 0)
-                        hash[s.charAt(left++)]++;
+                    // 如果该字符是多余的 或者 不是我们要找的，可以移除滑动窗口
+                    while (hash[s.charAt(left)] < 0 || hash[s.charAt(left)] == Integer.MAX_VALUE) {
+                        if (hash[s.charAt(left)] < 0)
+                            hash[s.charAt(left)]++;
+                        left++;
+                    }
                     if (resr - resl > right - left) {
                         resr = right;
                         resl = left;
@@ -57,11 +78,8 @@ public class P76MinimumWindowSubstring {
                     hash[s.charAt(left++)]++;
                     count++;
                 }
-                // right右移,找到一个，要查找数减一
-                hash[s.charAt(right++)]--;
             }
-            System.out.println("s is " + s + " left is " + resl + " right : " + resr);
-            return s.substring(resl, resr);
+            return resr == s.length() + 1 ? "" : s.substring(resl, resr + 1);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
