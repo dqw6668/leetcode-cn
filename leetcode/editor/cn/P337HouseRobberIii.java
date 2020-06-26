@@ -32,7 +32,7 @@
 // Related Topics 树 深度优先搜索
 
 
-package editor.cn.dp;
+package editor.cn;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,28 +53,31 @@ public class P337HouseRobberIii{
  *     TreeNode(int x) { val = x; }
  * }
  */
+public class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
 class Solution {
-    Map<TreeNode, Integer> memo = new HashMap<>();
+    Map<TreeNode, Integer> resMap = new HashMap<>();
     public int rob(TreeNode root) {
-        if (root == null)
-            return 0;
-        if (memo.containsKey(root))
-            return memo.get(root);
-        int do_rob = root.val +
-                (root.left == null ? 0 : rob(root.left.left) + rob(root.right.right))
-                + (root.right == null ? 0 : rob(root.right.left) + rob(root.right.right));
-        int notdo_rob = rob(root.left) + rob(root.right);
-        int res = Math.max(do_rob, notdo_rob);
-        memo.put(root, res);
+        if (null == root) return 0;
+        // 如果盗取某个节点打劫过直接取值
+        if (resMap.containsKey(root))
+            return resMap.get(root);
+        // 打劫该root 根据要求跳过子节点，考虑子节点为空
+        int rob = root.val +
+                (root.left == null ? 0 : rob(root.left.left) + rob(root.left.right)) +
+                (root.right == null ? 0 : rob(root.right.left) + rob(root.right.right));
+        // 不打劫该节点 打劫子节点
+        int not_rob = rob(root.left) + rob(root.right);
+        int res = Math.max(rob, not_rob);
+        resMap.put(root, res);
         return res;
     }
 }
-  public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode(int x) { val = x; }
-  }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
