@@ -28,7 +28,7 @@
 // Related Topics 数组 动态规划
 
 
-package editor.cn.dp;
+package editor.cn.StockDp;
 //Java：买卖股票的最佳时机 III
 public class P123BestTimeToBuyAndSellStockIii{
     public static void main(String[] args) {
@@ -39,15 +39,21 @@ public class P123BestTimeToBuyAndSellStockIii{
 class Solution {
     public int maxProfit(int[] prices) {
         int len = prices.length;
-        if (len <= 1)
+        if (len < 2)
             return 0;
+        // 因为可以交易两次,定义初始值第一天可以交易1次
         int dp_i10 = 0, dp_i11 = -prices[0];
         int dp_i20 = 0, dp_i21 = -prices[0];
-        for (int i = 1; i < len; i++) {
-            dp_i20 = Math.max(dp_i20, dp_i21 + prices[i]);
-            dp_i21 = Math.max(dp_i21, dp_i10 - prices[i]);
-            dp_i10 = Math.max(dp_i10, dp_i11 + prices[i]);
-            dp_i11 = Math.max(dp_i11, -prices[i]);
+        // 从第二天开始填表 买的时候增加交易的次数
+        for (int i = 2; i <= len; i++) {
+            // 头一天没有 或 头一天有 卖了
+            dp_i20 = Math.max(dp_i20, dp_i21 + prices[i - 1]);
+            // 头一天有 或 在买了第一次的基础上第二次买
+            dp_i21 = Math.max(dp_i21, dp_i10 - prices[i - 1]);
+            // 头一天没有 或 头一天有 卖了
+            dp_i10 = Math.max(dp_i10, dp_i11 + prices[i - 1]);
+            // 头一天有 或 头一天没有 第一次买了
+            dp_i11 = Math.max(dp_i11, -prices[i - 1]);
         }
         return dp_i20;
     }
