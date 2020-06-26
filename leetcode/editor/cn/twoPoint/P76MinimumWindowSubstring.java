@@ -14,7 +14,7 @@
 // Related Topics 哈希表 双指针 字符串 Sliding Window
 
 
-package editor.cn;
+package editor.cn.twoPoint;
 
 import java.util.Arrays;
 

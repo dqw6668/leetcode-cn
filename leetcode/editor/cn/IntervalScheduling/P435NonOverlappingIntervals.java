@@ -39,36 +39,45 @@
 // Related Topics 贪心算法
 
 
-package editor.cn.common;
+package editor.cn.IntervalScheduling;
 
 import java.util.Arrays;
 
 //Java：无重叠区间
-public class P435NonOverlappingIntervals{
+public class P435NonOverlappingIntervals {
     public static void main(String[] args) {
         Solution solution = new P435NonOverlappingIntervals().new Solution();
         // TO TEST
     }
+
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int eraseOverlapIntervals(int[][] intervals) {
-        // 求出最多不重叠区间个数。其他的就是要去掉的
-        if (intervals.length <= 1)
-            return 0;
-        Arrays.sort(intervals, (o1, o2) -> {
-            return o1[1] - o2[1];
-        });
-        int[] cur = intervals[0];
-        int count = 1;
-        for (int[] arr:intervals) {
-            if (arr[0] >= cur[1]) {
-                count++;
-                cur = arr;
+    class Solution {
+        public int eraseOverlapIntervals(int[][] intervals) {
+            // 求出最多不重叠区间个数。其他的就是要移除的
+            // 特判
+            int len = intervals.length;
+            if (len < 2)
+                return 0;
+            // 将所有区间的最右边排序，优先选择结束最早的
+            Arrays.sort(intervals, (o1, o2) -> {
+                return o1[1] - o2[1];
+            });
+            // 不重叠区间的数量
+            int res = 1;
+            // 不重叠区间的最右边
+            int[] curArray = intervals[0];
+            for (int[] array :
+                    intervals) {
+                // 如果区间的开始大于不重叠区间最右边,那么将其加入不重叠区间,最后curren区间改变，注：边界可接触
+                if (array[0] >= curArray[1]) {
+                    res++;
+                    curArray = array;
+                }
             }
+            // 返回的是需要去除的区间数
+            return len - res;
         }
-        return intervals.length - count;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

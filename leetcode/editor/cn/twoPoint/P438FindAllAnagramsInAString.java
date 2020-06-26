@@ -40,7 +40,7 @@
 // Related Topics 哈希表
 
 
-package editor.cn;
+package editor.cn.twoPoint;
 
 import java.util.ArrayList;
 import java.util.List;
