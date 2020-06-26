@@ -22,7 +22,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn.StockDp;
+package editor.cn.dp.StockDp;
 
 //Java：买卖股票的最佳时机 IV
 public class P188BestTimeToBuyAndSellStockIv {

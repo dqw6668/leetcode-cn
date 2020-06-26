@@ -32,7 +32,7 @@
 // Related Topics 树 深度优先搜索
 
 
-package editor.cn;
+package editor.cn.dp.HouseRob;
 
 import java.util.HashMap;
 import java.util.Map;
