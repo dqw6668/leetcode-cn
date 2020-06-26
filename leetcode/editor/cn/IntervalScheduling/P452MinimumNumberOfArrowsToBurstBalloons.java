@@ -20,41 +20,43 @@
 // Related Topics 贪心算法
 
 
-package editor.cn.common;
+package editor.cn.IntervalScheduling;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
 //Java：用最少数量的箭引爆气球
-public class P452MinimumNumberOfArrowsToBurstBalloons{
+public class P452MinimumNumberOfArrowsToBurstBalloons {
     public static void main(String[] args) {
         Solution solution = new P452MinimumNumberOfArrowsToBurstBalloons().new Solution();
         // TO TEST
     }
+
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int findMinArrowShots(int[][] points) {
-        // 还是求出不重叠的区间数，就是需要的箭数
-        int len = points.length;
-        if (len <= 1)
-            return len;
-        Arrays.sort(points, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
+    class Solution {
+        public int findMinArrowShots(int[][] points) {
+            // 题意，一只箭可以射爆重叠区间的所有气球，求出最多不重叠区间个数就是答案
+            int len = points.length;
+            if (len < 2)
+                return len;
+            // 求 最多 不重叠区间，优先考虑结束最早的
+            Arrays.sort(points, (o1, o2) -> {
                 return o1[1] - o2[1];
+            });
+            // 最多不重叠区间数
+            int res = 1;
+            // 当前不重叠区间的最右
+            int[] curArray = points[0];
+            for (int[] array : points) {
+                // 如果不重叠，结果++，最右刷新
+                if (array[0] > curArray[1]) {
+                    res++;
+                    curArray = array;
+                }
             }
-        });
-        int[] cur = points[0];
-        int count = 1;
-        for (int i = 1; i < len; i++) {
-            if (points[i][0] > cur[1]) {
-                count++;
-                cur = points[i];
-            }
+            return res;
         }
-        return count;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
