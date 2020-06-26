@@ -22,45 +22,47 @@
 // Related Topics 动态规划
 
 
-package editor.cn.dp;
+package editor.cn.StockDp;
+
 //Java：买卖股票的最佳时机 IV
-public class P188BestTimeToBuyAndSellStockIv{
+public class P188BestTimeToBuyAndSellStockIv {
     public static void main(String[] args) {
         Solution solution = new P188BestTimeToBuyAndSellStockIv().new Solution();
         // TO TEST
-    }
-    //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int maxProfit(int k, int[] prices) {
-        int len = prices.length;
-        if (len <= 1)
-            return 0;
-        if (k > len/2)
-            return maxProfit(prices);
-        int [][][] dp = new int[len][k+1][2];
-        for (int i = 0; i < len; i++) {
-            for (int j = k; j >= 1; j--) {
-                if (i == 0) {
-                    dp[i][j][0] = 0;
-                    dp[i][j][1] = -prices[i];
-                    continue;
-                }
-                dp[i][j][0] = Math.max(dp[i-1][j][0], dp[i-1][j][1] + prices[i]);
-                dp[i][j][1] = Math.max(dp[i-1][j][1], dp[i-1][j-1][0] - prices[i]);
-            }
-        }
-        return dp[len-1][k][0];
+        System.out.println(solution.maxProfit(2, new int[]{
+                3, 3, 5, 0, 0, 3, 1, 4}));
     }
 
-    public int maxProfit(int[] prices) {
-        int ret = 0;
-        for (int i = 0; i < prices.length - 1; i++) {
-            if (prices[i + 1] > prices[i])
-                ret += prices[i + 1] - prices[i];
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int maxProfit(int k, int[] prices) {
+            int len = prices.length;
+            if (len < 2) return 0;
+            if (len <= k / 2) return maxProfit(prices);
+            int[][][] dp = new int[len + 1][k + 1][2];
+            for (int i = 1; i <= len; i++) {
+                for (int j = 1; j <= k; j++) {
+                    if (i == 1) {
+                        dp[i][j][0] = 0;
+                        dp[i][j][1] = -prices[i - 1];
+                        continue;
+                    }
+                    dp[i][j][0] = Math.max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i - 1]);
+                    dp[i][j][1] = Math.max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i - 1]);
+                }
+            }
+            return dp[len][k][0];
         }
-        return ret;
+
+        public int maxProfit(int[] prices) {
+            int ret = 0;
+            for (int i = 0; i < prices.length - 1; i++) {
+                if (prices[i + 1] > prices[i])
+                    ret += prices[i + 1] - prices[i];
+            }
+            return ret;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
