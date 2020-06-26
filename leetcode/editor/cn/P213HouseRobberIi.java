@@ -19,7 +19,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn.dp;
+package editor.cn;
 //Java：打家劫舍 II
 public class P213HouseRobberIi{
     public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class P213HouseRobberIi{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int rob(int[] nums) {
-    // 在打家劫舍1的基础上，考虑仅打劫第一家，或仅打劫最后一家
+        // 比较抢第一家 和 不抢第一家的最大值
         int len = nums.length;
         if (len == 0)
             return 0;
@@ -37,21 +37,26 @@ class Solution {
             return nums[0];
         if (len == 2)
             return Math.max(nums[0], nums[1]);
-        int pre = nums[0], cur = Math.max(pre, nums[1]);
+        // 抢第一家 cur1
+        // 上一家
+        int pre1 = nums[0];
+        int cur1 = Math.max(nums[0], nums[1]);
         int tmp;
-        for (int i = 2; i < len-1; i++) {
-            tmp = pre;
-            pre = cur;
-            cur = Math.max(tmp + nums[i], cur);
+        for (int i = 2; i < len - 1; i++) {
+            tmp = cur1;
+            cur1 = Math.max(cur1, pre1 + nums[i]);
+            pre1 = tmp;
         }
 
-        int pre2 = nums[1], cur2 = Math.max(pre2,nums[2]);
+        // 不抢第一家
+        int pre2 = nums[1];
+        int cur2 = Math.max(nums[1], nums[2]);
         for (int i = 3; i < len; i++) {
-            tmp = pre2;
-            pre2 = cur2;
-            cur2 = Math.max(tmp + nums[i], cur2);
+            tmp = cur2;
+            cur2 = Math.max(cur2, pre2 + nums[i]);
+            pre2 = tmp;
         }
-        return Math.max(cur2, cur);
+        return Math.max(cur1, cur2);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
