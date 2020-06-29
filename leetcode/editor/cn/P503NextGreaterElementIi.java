@@ -31,8 +31,14 @@ class Solution {
         int[] res = new int[nums.length];
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < 2 * nums.length; i++) {
-            
+            //
+            while (!stack.isEmpty() && nums[stack.peek()] < nums[i % nums.length]) {
+                stack.pop();
+            }
+            res[i % nums.length] = (stack.isEmpty() ? -1 : nums[stack.peek()]);
+            stack.push(i % nums.length);
         }
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
