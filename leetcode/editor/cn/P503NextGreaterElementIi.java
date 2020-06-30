@@ -17,6 +17,7 @@
 
 package editor.cn;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 //Java：下一个更大元素 II
@@ -30,12 +31,12 @@ class Solution {
     public int[] nextGreaterElements(int[] nums) {
         int[] res = new int[nums.length];
         Stack<Integer> stack = new Stack<>();
+        Arrays.fill(res, -1);
         for (int i = 0; i < 2 * nums.length; i++) {
             //
             while (!stack.isEmpty() && nums[stack.peek()] < nums[i % nums.length]) {
-                stack.pop();
+                res[stack.pop()] = nums[i % nums.length];
             }
-            res[i % nums.length] = (stack.isEmpty() ? -1 : nums[stack.peek()]);
             stack.push(i % nums.length);
         }
         return res;
