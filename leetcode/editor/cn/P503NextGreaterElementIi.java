@@ -29,11 +29,14 @@ public class P503NextGreaterElementIi{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
+        // 寸结果的数组
         int[] res = new int[nums.length];
+        // 利用单调栈
         Stack<Integer> stack = new Stack<>();
+        // 全初始-1
         Arrays.fill(res, -1);
         for (int i = 0; i < 2 * nums.length; i++) {
-            //
+            // 所有数都要先入栈才能出栈，当找到一个比栈中数大的，那么就是他的下一个更大的元素
             while (!stack.isEmpty() && nums[stack.peek()] < nums[i % nums.length]) {
                 res[stack.pop()] = nums[i % nums.length];
             }
