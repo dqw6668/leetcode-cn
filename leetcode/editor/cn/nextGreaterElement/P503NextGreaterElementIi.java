@@ -15,7 +15,7 @@
 // Related Topics 栈
 
 
-package editor.cn;
+package editor.cn.nextGreaterElement;
 
 import java.util.Arrays;
 import java.util.Stack;
