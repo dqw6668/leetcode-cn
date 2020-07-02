@@ -38,7 +38,7 @@
 // Related Topics 堆 Sliding Window
 
 
-package editor.cn;
+package editor.cn.nextGreaterElement;
 
 import java.util.ArrayDeque;
 
