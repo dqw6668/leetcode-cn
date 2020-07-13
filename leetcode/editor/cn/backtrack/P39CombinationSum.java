@@ -43,7 +43,7 @@
 // 👍 757 👎 0
 
 
-package editor.cn;
+package editor.cn.backtrack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
