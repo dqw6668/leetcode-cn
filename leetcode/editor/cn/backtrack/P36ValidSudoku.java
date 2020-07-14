@@ -59,7 +59,7 @@
 // 👍 371 👎 0
 
 
-package editor.cn;
+package editor.cn.backtrack;
 
 //Java：有效的数独
 public class P36ValidSudoku {

@@ -29,7 +29,7 @@
 // 👍 469 👎 0
 
 
-package editor.cn;
+package editor.cn.backtrack;
 
 //Java：解数独
 public class P37SudokuSolver {
