@@ -53,7 +53,7 @@ public class P33SearchInRotatedSortedArray {
                     if (nums[mid] <= target && target <= nums[right])
                         left = mid;
                     else
-                        right = mid;
+                        right = mid - 1;
                 }
             }
             if (nums[left] == target)
