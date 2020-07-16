@@ -22,7 +22,7 @@
 // 👍 826 👎 0
 
 
-package editor.cn;
+package editor.cn.binarySearch;
 
 //Java：搜索旋转排序数组
 public class P33SearchInRotatedSortedArray {

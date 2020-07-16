@@ -25,7 +25,7 @@
 // 👍 189 👎 0
 
 
-package editor.cn;
+package editor.cn.binarySearch;
 
 //Java：搜索旋转排序数组 II
 public class P81SearchInRotatedSortedArrayIi {
