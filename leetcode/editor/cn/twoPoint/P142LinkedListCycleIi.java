@@ -41,7 +41,7 @@
 // 👍 541 👎 0
 
 
-package editor.cn;
+package editor.cn.twoPoint;
 
 import editor.cn.List.ListNode;
 
