@@ -23,7 +23,7 @@
 // 👍 296 👎 0
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：汉明距离
 public class P461HammingDistance{
     public static void main(String[] args) {

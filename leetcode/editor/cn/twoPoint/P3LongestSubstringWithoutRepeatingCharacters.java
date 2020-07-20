@@ -25,7 +25,7 @@
 // 👍 4002 👎 0
 
 
-package editor.cn;
+package editor.cn.twoPoint;
 
 //Java：无重复字符的最长子串
 public class P3LongestSubstringWithoutRepeatingCharacters {
