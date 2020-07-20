@@ -54,39 +54,37 @@ public class P438FindAllAnagramsInAString{
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public List<Integer> findAnagrams(String s, String p) {
-            List<Integer> list = new ArrayList<>();
-            if (s==null || s.length() == 0 || p == null || p.length() == 0)
-                return list;
-
-            int[] hash = new int[256];
-            for (char c: p.toCharArray()) {
-                hash[c]++;
-            }
-            int left = 0;
-            int right = 0;
-            int count = p.length();
-
+            List<Integer> res = new ArrayList<>();
+            if (s == "" || p == "" || s.length() == 0 || p.length() == 0 || s.length() < p.length())
+                return res;
+            // 记录字符串t中字符的频率，也就是窗口内需要匹配的字符对应频率
+            int[] need = new int[128];
+            for (char c : p.toCharArray())
+                need[c]++;
+            int left = 0, right = 0;
+            int match = 0;
             while (right < s.length()) {
-
-                if (hash[s.charAt(right)] > 0) {
-                    count--;
-                }
-                hash[s.charAt(right)]--;
+                char charRight = s.charAt(right);
+                need[charRight]--;
+                // 如果charRight在t中，那么个数还大于等于0，则匹配了一个
+                // 如果charRight不在t中，因为need[charRight]初始为0，此时一定小于0,不进行任何操作
+                if (need[charRight] >= 0)
+                    match++;
                 right++;
-
-                if (count == 0) {
-                    list.add(left);
-                }
-
-                if (right - left == p.length()) {
-                    if (hash[s.charAt(left)] >= 0) {
-                        count++;
-                    }
-                    hash[s.charAt(left)]++;
+                while (match == p.length()) {
+                    // 当匹配时，且窗口内与p中字母相同，加入res
+                    if (right - left == p.length())
+                        res.add(left);
+                    char charLeft = s.charAt(left);
+                    need[charLeft]++;
+                    // 不在 t 中出现的字符，移出窗口，最终能够达到的最大值 need[charLeft] = 0
+                    // 如果恰好移出了需要匹配的一个字符，那么这里 need[charLeft] > 0, 也就是还要匹配字符 charLeft，此时 match--
+                    if (need[charLeft] > 0)
+                        match--;
                     left++;
                 }
             }
-            return list;
+            return res;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

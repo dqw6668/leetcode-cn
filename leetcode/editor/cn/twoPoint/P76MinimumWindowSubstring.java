@@ -21,7 +21,7 @@ import java.util.Arrays;
 //Java：最小覆盖子串
 public class P76MinimumWindowSubstring {
     public static void main(String[] args) {
-        Solution solution = new P76MinimumWindowSubstring().new Solution();
+        Solution2 solution = new P76MinimumWindowSubstring().new Solution2();
         // TO TEST
         System.out.println(solution.minWindow("ADOBECODEBANC", "ABC"));
         System.out.println(solution.minWindow("A", "A"));
@@ -83,5 +83,47 @@ public class P76MinimumWindowSubstring {
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
+class Solution2 {
+    public String minWindow(String s, String t) {
+        // 特判
+        if (null == s || null == t)
+            return "";
+        // 记录结果字符串的开始和结尾
+        int resL = 0, resR = s.length() + 1;
+        // 滑动窗口
+        int left = 0, right = 0;
+        int[] need = new int[256];
+        int[] window = new int[256];
+        // 表示还需要加入滑动窗口的字符数
+        int count = 0;
+        for (int i = 0; i < t.length(); i++) {
+            need[t.charAt(i)]++;
+            count++;
+        }
+        while (right < s.length()) {
+            char curChar = s.charAt(right);
+            // 如果是要找的字符 加入滑动窗口
+            if (need[curChar] != 0) {
+                window[curChar]++;
+                count--;
+            }
+            right++;
+            while (count <= 0) {
+                if (right - left < resR - resL) {
+                    resR = right;
+                    resL = left;
+                }
+                char leftChar = s.charAt(left);
+                // 移出滑动窗口
+                if (need[leftChar] != 0) {
+                    window[leftChar]--;
+                    count++;
+                }
+                left++;
+            }
+        }
+        return resR == s.length() + 1 ? "" : s.substring(resL, resR);
+    }
+}
 
 }
