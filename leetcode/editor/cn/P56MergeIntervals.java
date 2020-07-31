@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //Java：合并区间
+// date 2020-07-31 20:04
 public class P56MergeIntervals{
     public static void main(String[] args) {
         Solution solution = new P56MergeIntervals().new Solution();
