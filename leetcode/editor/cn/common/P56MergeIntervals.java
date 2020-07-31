@@ -16,7 +16,7 @@
 // 👍 528 👎 0
 
 
-package editor.cn;
+package editor.cn.common;
 
 import java.util.ArrayList;
 import java.util.Arrays;
