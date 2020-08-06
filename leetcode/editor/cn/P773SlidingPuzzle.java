@@ -50,6 +50,12 @@
 
 
 package editor.cn;
+
+import java.util.ArrayDeque;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.Set;
+
 //Java：滑动谜题
 public class P773SlidingPuzzle{
     public static void main(String[] args) {
@@ -58,8 +64,56 @@ public class P773SlidingPuzzle{
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+        int[][] exchangeArray = new int[][]{
+                {1, 3},
+                {0, 2, 4},
+                {1, 5},
+                {0, 4},
+                {1, 3, 5},
+                {2, 4}
+        };
+        // 交换字符
+        public String exchangeString(String string, int src, int dis) {
+            char[] chars = string.toCharArray();
+            char temp = chars[dis];
+            chars[dis] = chars[src];
+            chars[src] = temp;
+            return new String(chars);
+        }
     public int slidingPuzzle(int[][] board) {
-        return 1;
+        char[] chars = new char[6];
+        int index = 0;
+        for (int[] row:board) {
+            for (int ch:row) {
+                chars[index++] = (char)(ch+'0');
+            }
+        }
+        String start = new String(chars);
+        String target = "123450";
+        // BFS套路
+        Queue<String> q = new ArrayDeque<>();
+        Set<String> visited = new HashSet<>();
+        q.offer(start);
+        int step = 0;
+        while (!q.isEmpty()) {
+            int sz = q.size();
+            for (int i = 0; i < sz; i++) {
+                String cur = q.poll();
+                if (cur.equals(target))
+                    return step;
+                int position = cur.indexOf('0');
+                int[] exchanges = exchangeArray[position];
+                for (int exchange : exchanges) {
+                    String s = exchangeString(cur, exchange, position);
+                    if (!visited.contains(s)) {
+                        q.add(s);
+                        visited.add(s);
+                    }
+                }
+            }
+            step++;
+        }
+        return -1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
