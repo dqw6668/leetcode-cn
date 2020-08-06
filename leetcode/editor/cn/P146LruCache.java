@@ -36,6 +36,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 //Java：LRU缓存机制
+
+// date 2020-08-06 17:31:30
 public class P146LruCache {
     public static void main(String[] args) {
         // TO TEST
