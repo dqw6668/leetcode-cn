@@ -43,7 +43,7 @@
 // 👍 87 👎 0
 
 
-package editor.cn;
+package editor.cn.binarySearch;
 
 import java.util.Arrays;
 
