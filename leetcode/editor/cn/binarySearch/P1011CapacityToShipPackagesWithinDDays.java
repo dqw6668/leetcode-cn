@@ -56,9 +56,7 @@
 // 👍 102 👎 0
 
 
-package editor.cn;
-
-import java.util.Arrays;
+package editor.cn.binarySearch;
 
 //Java：在 D 天内送达包裹的能力
 public class P1011CapacityToShipPackagesWithinDDays {
