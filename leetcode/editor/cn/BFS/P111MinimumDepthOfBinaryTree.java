@@ -19,9 +19,7 @@
 // 👍 308 👎 0
 
 
-package editor.cn;
-
-import editor.cn.BFS.TreeNode;
+package editor.cn.BFS;
 
 import java.util.LinkedList;
 import java.util.Queue;

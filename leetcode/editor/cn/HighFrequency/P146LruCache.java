@@ -30,7 +30,7 @@
 // 👍 798 👎 0
 
 
-package editor.cn;
+package editor.cn.HighFrequency;
 
 import java.util.HashMap;
 import java.util.Map;

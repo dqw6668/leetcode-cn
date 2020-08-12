@@ -14,7 +14,7 @@
 // 👍 77 👎 0
 
 
-package editor.cn;
+package editor.cn.HighFrequency;
 
 import java.util.LinkedList;
 import java.util.List;

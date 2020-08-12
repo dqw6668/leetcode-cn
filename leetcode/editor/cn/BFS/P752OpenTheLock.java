@@ -59,7 +59,7 @@
 // 👍 141 👎 0
 
 
-package editor.cn;
+package editor.cn.BFS;
 
 import java.util.*;
 
