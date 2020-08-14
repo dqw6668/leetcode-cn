@@ -50,15 +50,15 @@ import java.util.Stack;
 //Java：有效的括号
 public class P20ValidParentheses{
     public static void main(String[] args) {
-        Solution solution = new P20ValidParentheses().new Solution();
         // TO TEST
         //System.out.println(solution.isValid("(){}[]"));
         //System.out.println(solution.isValid("(]"));
-        System.out.println(solution.isValid("){"));
+        //System.out.println(solution.isValid("){"));
     }
+}
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        Map<Character, Character> map = new HashMap(){{
+        static Map<Character, Character> map = new HashMap(){{
             put('(', ')');
             put('[', ']');
             put('{', '}');
@@ -83,4 +83,3 @@ public class P20ValidParentheses{
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
-}
