@@ -13,7 +13,7 @@
 // 👍 1543 👎 0
 
 
-package editor.cn;
+package editor.cn.twoPoint;
 //Java：接雨水
 public class P42TrappingRainWater{
     public static void main(String[] args) {

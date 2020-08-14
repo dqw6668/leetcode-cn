@@ -22,7 +22,7 @@
 // 👍 432 👎 0
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：字符串相乘
 public class P43MultiplyStrings{
     public static void main(String[] args) {

@@ -41,7 +41,7 @@
 // 👍 1769 👎 0
 
 
-package editor.cn;
+package editor.cn.HighFrequency;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,10 +55,10 @@ public class P20ValidParentheses{
         //System.out.println(solution.isValid("(]"));
         //System.out.println(solution.isValid("){"));
     }
-}
+
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        static Map<Character, Character> map = new HashMap(){{
+        Map<Character, Character> map = new HashMap(){{
             put('(', ')');
             put('[', ']');
             put('{', '}');
@@ -82,4 +82,5 @@ public class P20ValidParentheses{
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
+}
 
