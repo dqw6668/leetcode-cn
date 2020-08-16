@@ -29,18 +29,21 @@
 
 
 package editor.cn.TODO;
-//Java：我能赢吗
-public class P464CanIWin{
-    public static void main(String[] args) {
-        Solution solution = new P464CanIWin().new Solution();
-        // TO TEST
-    }
-    //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        return true;
-    }
-}
-//leetcode submit region end(Prohibit modification and deletion)
 
-}
+
+import java.util.HashMap;
+import java.util.Map;
+
+//Java：我能赢吗
+public class P464CanIWin {
+
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+            return true;
+        }
+    }
+
+
+
+    }
