@@ -38,9 +38,7 @@
 // 👍 427 👎 0
 
 
-package editor.cn;
-
-import editor.cn.tree.TreeNode;
+package editor.cn.tree;
 
 //Java：平衡二叉树
 public class P110BalancedBinaryTree{

@@ -32,8 +32,9 @@
 // 👍 119 👎 0
 
 
-package editor.cn;
+package editor.cn.BFS;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -42,6 +43,7 @@ public class P733FloodFill {
     public static void main(String[] args) {
         Solution solution = new P733FloodFill().new Solution();
         // TO TEST
+        new HashMap<>(2);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
