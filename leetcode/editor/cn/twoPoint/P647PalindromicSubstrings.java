@@ -28,12 +28,36 @@
 // 👍 367 👎 0
 
 
-package editor.cn;
+package editor.cn.twoPoint;
+
+import java.util.ArrayList;
+import java.util.List;
+
 //Java：回文子串
 public class P647PalindromicSubstrings{
     public static void main(String[] args) {
         Solution solution = new P647PalindromicSubstrings().new Solution();
         // TO TEST
+        class Solution {
+            public List<Integer> mostVisited(int n, int[] rounds) {
+                int[] cnt = new int[n+1];
+                int maxR = 0;
+                List<Integer> res = new ArrayList<>();
+                int len = rounds.length;
+                for (int i = 0; i < len - 1; i++) {
+                    for (int j = rounds[i]; (j-1)% (Math.max(rounds[i],rounds[i+1])) + 1 != rounds[i + 1]; j++) {
+                        cnt[i+1] += 1;
+                        maxR = Math.max(maxR, cnt[i+1]);
+                    }
+                }
+                for (int i = 0; i<cnt.length; i++) {
+                    if (cnt[i] == maxR) {
+                        res.add(i + 1);
+                    }
+                }
+                return res;
+            }
+        }
     }
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
