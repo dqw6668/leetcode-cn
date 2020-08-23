@@ -1,6 +1,5 @@
 package editor.cn.Weeklycompetition;
 
-import editor.cn.TODO.P464CanIWin;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,7 +8,7 @@ import java.util.Map;
 /**
  * Created by Five on 2020/8/16 14:51
  */
-public class week202 {
+public class Week202 {
     public static void main(String[] args) {
         Solution4 solution4 = new Solution4();
         // TO TEST

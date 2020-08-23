@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by Five on 2020/8/23 11:19
  */
-public class week203 {
+public class Week203 {
     public static void main(String[] args) {
         week203Solution1 solution1 = new week203Solution1();
         solution1.mostVisited(4, new int[]{1,3,1,2});
