@@ -73,3 +73,41 @@ class DoubleWeek33Solution3{
         return movedCnt + binaryCnt - 1;
     }
 }
+
+class DoubleWeek33Solution4 {
+    int[] dx = new int[]{1, -1, 0, 0};
+    int[] dy = new int[]{0, 0, 1, -1};
+    int row = 0, col = 0;
+    boolean[][] visited = new boolean[505][505];
+    boolean res = false;
+    public boolean containsCycle(char[][] grid) {
+        row = grid.length;
+        col = grid[0].length;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (!visited[i][j] && !res) {
+                    dfs(i, j, -1, -1, grid);
+                }
+            }
+        }
+        return res;
+    }
+
+    private void dfs(int x, int y, int px, int py, char[][] grid) {
+        if (visited[x][y]) {
+            res = true;
+            return;
+        }
+        visited[x][y] = true;
+        for (int i = 0; i < 4; i++) {
+            // 四个方向点
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
+            if (nextX == px && nextY == py)
+                continue;
+            if(nextX >= 0 && nextX < row && nextY >= 0 && nextY < col && grid[nextX][nextY] == grid[x][y]) {
+                dfs(nextX, nextY, x, y, grid);
+            }
+        }
+    }
+}
