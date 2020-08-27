@@ -50,6 +50,7 @@ import java.util.Map;
 public class P1032StreamOfCharacters{
     public static void main(String[] args) {
         // TO TEST
+        String s = new String("11");
         StreamChecker streamChecker = new StreamChecker(new String[]{"cd", "f", "kl"});
         System.out.println(streamChecker.query('a'));
         System.out.println(streamChecker.query('b'));
@@ -98,5 +99,4 @@ public class P1032StreamOfCharacters{
  * boolean param_1 = obj.query(letter);
  */
 //leetcode submit region end(Prohibit modification and deletion)
-
 }

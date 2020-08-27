@@ -22,7 +22,7 @@
 // 👍 306 👎 0
 
 
-package editor.cn;
+package editor.cn.HighFrequency;
 //Java：缺失数字
 public class P268MissingNumber{
     public static void main(String[] args) {
