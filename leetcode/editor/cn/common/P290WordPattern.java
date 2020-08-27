@@ -28,7 +28,7 @@
 // 👍 186 👎 0
 
 
-package editor.cn;
+package editor.cn.common;
 
 import java.util.HashMap;
 import java.util.Map;
