@@ -38,6 +38,8 @@ public class P290WordPattern{
     public static void main(String[] args) {
         Solution solution = new P290WordPattern().new Solution();
         // TO TEST
+        System.out.println(solution.wordPattern("ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdd"
+                ,"s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s t t"));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
@@ -46,7 +48,8 @@ class Solution {
             if (words.length != pattern.length())
                 return false;
             Map index = new HashMap();
-            for (int i = 0; i < words.length; ++i)
+            // 分别建立p和s的映射，如果出现不一样就false
+            for (Integer i = 0; i < words.length; ++i)
                 if (index.put(pattern.charAt(i), i) != index.put(words[i], i))
                     return false;
             return true;
