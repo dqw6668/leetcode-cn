@@ -34,7 +34,7 @@
 // 👍 54 👎 0
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：香槟塔
 public class P799ChampagneTower{
     public static void main(String[] args) {
