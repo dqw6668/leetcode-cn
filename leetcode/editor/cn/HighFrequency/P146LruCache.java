@@ -33,6 +33,7 @@
 package editor.cn.HighFrequency;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 //Java：LRU缓存机制
@@ -139,5 +140,26 @@ public class P146LruCache {
  * obj.put(key,value);
  */
 //leetcode submit region end(Prohibit modification and deletion)
+class LRUCache2 extends LinkedHashMap<Integer, Integer> {
+    private int capacity;
+
+    public LRUCache2(int capacity) {
+        super(capacity, 0.75F, true);
+        this.capacity = capacity;
+    }
+
+    public int get(int key) {
+        return super.getOrDefault(key, -1);
+    }
+
+    public void put(int key, int value) {
+        super.put(key, value);
+    }
+
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+        return size() > capacity;
+    }
+}
 
 }
