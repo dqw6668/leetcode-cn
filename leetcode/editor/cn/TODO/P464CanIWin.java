@@ -36,6 +36,13 @@ import java.util.Map;
 
 //Java：我能赢吗
 public class P464CanIWin {
+    public static void main(String[] args) {
+        Solution2 solution2 = new Solution2();
+        System.out.println(solution2.champagneTower(3,1,1));
+        System.out.println(solution2.champagneTower(1,1,1));
+        System.out.println(solution2.champagneTower(2,1,1));
+
+    }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
@@ -44,6 +51,41 @@ public class P464CanIWin {
         }
     }
 
-
+    static class Solution2 {
+        public double champagneTower(int poured, int query_row, int query_glass) {
+            double res = 0.0;
+            double need = (query_row + 1 + 1) * (query_row+1) / 2;
+            double preneed = need-query_row-1;
+            if (poured > need) return 1.0;
+            if (poured < preneed) return res;
+            double tmp = poured - preneed;
+            int cnt = 1;
+            if ((poured & 1) == 1) {
+                for (int i = 1; i < (query_row + 1) / 2 + 1; i++) {
+                    cnt += 2*i;
+                }
+                cnt *= 2;
+                cnt += (query_row / 2 + 1) * 2;
+                double avg = tmp / cnt;
+                if (query_glass < query_row / 2 + 1)
+                    return avg * (Math.pow(2, query_glass));
+                else {
+                    return avg * (Math.pow(2, ((query_row ) - query_glass)));
+                }
+            }
+            else {
+                for (int i = 1; i <= (query_row ) / 2; i++) {
+                    cnt += 2*i;
+                }
+                cnt *= 2;
+                double avg = tmp / cnt;
+                if ((query_glass + 1) <= (query_row + 1)/ 2)
+                    return avg * (Math.pow(2, query_glass));
+                else {
+                    return avg * (Math.pow(2, ((query_row) - query_glass)));
+                }
+            }
+        }
+    }
 
     }
