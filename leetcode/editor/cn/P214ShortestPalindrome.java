@@ -24,17 +24,27 @@ public class P214ShortestPalindrome{
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public String shortestPalindrome(String s) {
-            String r = new StringBuilder(s).reverse().toString();
-            int n = s.length();
-            int i = 0;
-            for (; i < n; i++) {
-                if (s.substring(0, n - i).equals(r.substring(i))) {
-                    break;
+            String ss= s + '#' + new StringBuilder(s).reverse();
+            int n = ss.length();
+            char[] c = ss.toCharArray();
+            int[] next = new int[n + 1];
+            // 以便于不匹配时++回到最开始下标0
+            next[0] = -1;
+            next[1] = 0;
+            int slow = 0, fast = 2;
+            while (fast <= n) {
+                if (slow == -1 || c[slow] == c[fast - 1]) {
+                    slow++;
+                    next[fast] = slow;
+                    fast++;
+                }
+                else {
+                    slow = next[slow];
                 }
             }
-            return new StringBuilder(s.substring(n - i)).reverse() + s;
+            String res = new StringBuilder(s.substring(next[n])).reverse().append(s).toString();
+            return res;
         }
-
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
