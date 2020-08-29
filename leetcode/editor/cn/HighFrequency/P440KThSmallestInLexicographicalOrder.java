@@ -17,7 +17,7 @@
 // 👍 148 👎 0
 
 
-package editor.cn;
+package editor.cn.HighFrequency;
 //Java：字典序的第K小数字
 public class P440KThSmallestInLexicographicalOrder{
     public static void main(String[] args) {

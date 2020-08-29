@@ -38,13 +38,16 @@
 
 package editor.cn;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Queue;
 
 //Java：提莫攻击
 public class P495TeemoAttacking{
     public static void main(String[] args) {
         Solution solution = new P495TeemoAttacking().new Solution();
         // TO TEST
+        Queue<int[]> queue = new ArrayDeque<>();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
