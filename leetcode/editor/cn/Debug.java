@@ -13,24 +13,26 @@ public class Debug {
     }
 }
 class Solution {
-    public boolean wordPattern(String pattern, String str) {
-        Map<Character, String> map = new HashMap<>();
-        String[] arr = str.split(" ");
-        int lenP = pattern.length();
-        int lenS = arr.length;
-        if (lenP != lenS) return false;
-        for (int i = 0; i < lenP; i++) {
-            if (map.containsKey(pattern.charAt(i))) {
-                String tmp = map.get(pattern.charAt(i));
-                if (!tmp.equals(arr[i]))
-                    return false;
-            }
-            else {
-                if (map.containsValue(arr[i]))
-                    return false;
-                map.put(pattern.charAt(i), arr[i]);
+    public String longestPalindrome(String s) {
+        int len = s.length();
+        if (len < 1) return s;
+        int[] index = new int[2];
+        int maxLen = 1;
+        for (int i = 0; i < 2* len - 1; i++) {
+            int left = i / 2;
+            int right = i / 2 + i % 2;
+            int cnt = 0;
+            while (left >= 0 && right < len && s.charAt(left) == s.charAt(right)) {
+                cnt = right - left + 1;
+                left--;
+                right++;
+                if (cnt > maxLen) {
+                    maxLen = cnt;
+                    index[0] = left;
+                    index[1] = right;
+                }
             }
         }
-        return true;
+        return s.substring(index[0], index[1] + 1);
     }
 }
