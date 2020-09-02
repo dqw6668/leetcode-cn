@@ -2,6 +2,9 @@ package editor.cn.Weeklycompetition;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * Created by Five on 2020/8/30 17:05

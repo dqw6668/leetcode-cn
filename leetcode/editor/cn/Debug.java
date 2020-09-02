@@ -1,7 +1,7 @@
 package editor.cn;
 
-import javax.xml.stream.events.Characters;
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Five on 2020/8/27 19:04
@@ -9,17 +9,17 @@ import java.util.*;
 public class Debug {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        List<String> res = solution.restoreIpAddresses("010010");
-        for (String s : res) {
-            System.out.println(s);
-        }
+
+        ReentrantLock
     }
 }
 class Solution {
     List<String> res = new LinkedList();
     public List<String> restoreIpAddresses(String s) {
+        Thread thread = new Thread();
         backTrack("", res, 0, s);
         return res;
+
     }
 
     private void backTrack(String curComb, List<String> list, int index, String last) {
