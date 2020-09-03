@@ -1,43 +1,50 @@
 package editor.cn;
 
 import java.util.*;
-import java.util.concurrent.locks.ReentrantLock;
-
+import editor.cn.tree.TreeNode;
 /**
  * Created by Five on 2020/8/27 19:04
  */
 public class Debug {
     public static void main(String[] args) {
         Solution solution = new Solution();
-
+        LinkedList l = new LinkedList();
     }
 }
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 class Solution {
-    List<String> res = new LinkedList();
-    public List<String> restoreIpAddresses(String s) {
-        Thread thread = new Thread();
-        backTrack("", res, 0, s);
-        return res;
-
-    }
-
-    private void backTrack(String curComb, List<String> list, int index, String last) {
-        if (index == 4) {
-            list.add(curComb.substring(curComb.length() - 1, curComb.length()));
-            return;
-        }
-        if (index == 3 && last.length() > 3)
-            return;
-        if (index == 2 && last.length() > 6)
-            return;
-        for (int i = 0; i < Math.min(3, last.length()); i++) {
-            String newComb = last.substring(0, i + 1);
-            int tmpi = Integer.parseInt(newComb);
-            if ( tmpi<= 255) {
-                newComb = curComb + tmpi + ".";
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) return res;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        boolean flag = true;
+        while (!queue.isEmpty()) {
+            int sz = queue.size();
+            LinkedList<Integer> list = new LinkedList<>();
+            for (int i = 0; i < sz; i++) {
+                TreeNode node = queue.poll();
+                if (flag)
+                    // add加list末尾
+                    list.add(node.val);
+                else
+                    list.push(node.val);
+                if (node.left != null)
+                    queue.add(node.left);
+                if (node.right != null)
+                    queue.add(node.right);
             }
-            backTrack(newComb, list, index + 1, last.substring(i, last.length()));
+            res.add(list);
+            flag = !flag;
         }
-
+        return res;
     }
 }
