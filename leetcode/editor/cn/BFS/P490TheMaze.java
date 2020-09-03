@@ -58,12 +58,10 @@
 // 👍 53 👎 0
 
 
-package editor.cn;
+package editor.cn.BFS;
 
 import java.util.ArrayDeque;
-import java.util.HashSet;
 import java.util.Queue;
-import java.util.Set;
 
 //Java：迷宫
 public class P490TheMaze{

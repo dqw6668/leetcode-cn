@@ -49,7 +49,7 @@
 // 👍 402 👎 0
 
 
-package editor.cn;
+package editor.cn.backtrack;
 
 import java.util.LinkedList;
 import java.util.List;

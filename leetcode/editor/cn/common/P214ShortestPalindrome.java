@@ -14,7 +14,7 @@
 // 👍 213 👎 0
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：最短回文串
 public class P214ShortestPalindrome{
     public static void main(String[] args) {

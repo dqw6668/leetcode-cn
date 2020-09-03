@@ -41,7 +41,7 @@
 // 👍 214 👎 0
 
 
-package editor.cn;
+package editor.cn.common;
 //Java：翻转字符串里的单词
 public class P151ReverseWordsInAString{
     public static void main(String[] args) {

@@ -36,7 +36,7 @@
 // 👍 102 👎 0
 
 
-package editor.cn;
+package editor.cn.common;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;

@@ -24,7 +24,7 @@
 // 👍 57 👎 0
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：栅栏涂色
 public class P276PaintFence{
     public static void main(String[] args) {
