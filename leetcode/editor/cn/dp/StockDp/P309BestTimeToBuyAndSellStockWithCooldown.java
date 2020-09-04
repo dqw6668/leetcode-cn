@@ -15,7 +15,7 @@
 // Related Topics 动态规划
 
 
-package editor.cn.dp;
+package editor.cn.dp.StockDp;
 //Java：最佳买卖股票时机含冷冻期
 public class P309BestTimeToBuyAndSellStockWithCooldown{
     public static void main(String[] args) {
