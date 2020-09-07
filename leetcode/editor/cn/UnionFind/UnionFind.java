@@ -1,4 +1,4 @@
-package editor.cn.HighFrequency;
+package editor.cn.UnionFind;
 
 import java.util.Arrays;
 

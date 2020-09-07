@@ -21,30 +21,23 @@ public class Debug {
  * }
  */
 class Solution {
-    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
-        if (root == null) return res;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        boolean flag = true;
-        while (!queue.isEmpty()) {
-            int sz = queue.size();
-            LinkedList<Integer> list = new LinkedList<>();
-            for (int i = 0; i < sz; i++) {
-                TreeNode node = queue.poll();
-                if (flag)
-                    // add加list末尾
-                    list.add(node.val);
-                else
-                    list.push(node.val);
-                if (node.left != null)
-                    queue.add(node.left);
-                if (node.right != null)
-                    queue.add(node.right);
+    public List<List<Integer>> threeSum(int[] nums) {
+        int len = nums.length;
+        Set<List<Integer>> set = new HashSet<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < len ; i++) {
+            for (int j = i + 1; j < len; j++) {
+                if (map.containsKey(0 - nums[i] - nums[j])) {
+                    List<Integer> tmp = new ArrayList<>();
+                    tmp.add(nums[i]);
+                    tmp.add(nums[j]);
+                    tmp.add(0 - nums[i] - nums[j]);
+                    tmp.sort(Comparator.naturalOrder());
+                    set.add(tmp);
+                }
             }
-            res.add(list);
-            flag = !flag;
+            map.put(nums[i], i);
         }
-        return res;
+        return new ArrayList<>(set);
     }
 }
