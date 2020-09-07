@@ -39,6 +39,7 @@ public class P188BestTimeToBuyAndSellStockIv {
             int len = prices.length;
             if (len < 2) return 0;
             if (len <= k / 2) return maxProfit(prices);
+            // dp[i][j][0]表示第i天，已经交易了j次，是否持有股票
             int[][][] dp = new int[len + 1][k + 1][2];
             for (int i = 1; i <= len; i++) {
                 for (int j = 1; j <= k; j++) {
