@@ -40,7 +40,7 @@
 // 👍 309 👎 0
 
 
-package editor.cn;
+package editor.cn.UnionFind;
 //Java：朋友圈
 public class P547FriendCircles{
     public static void main(String[] args) {

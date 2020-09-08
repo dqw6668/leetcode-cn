@@ -8,7 +8,18 @@ import editor.cn.tree.TreeNode;
 public class Debug {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        LinkedList l = new LinkedList();
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        System.out.println(abs(Integer.MIN_VALUE));
+        System.out.println(abs(Integer.MAX_VALUE));
+        System.out.println(Math.abs(Integer.MIN_VALUE));
+        System.out.println(Math.abs(Integer.MAX_VALUE));
+    }
+    public static int abs(int x) {
+        // 拿到最高位符号位
+        if (x >>> 31 == 0) {
+            return x;
+        }
+        return ~x + 1;
     }
 }
 /**
@@ -20,24 +31,32 @@ public class Debug {
  *     TreeNode(int x) { val = x; }
  * }
  */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-        int len = nums.length;
-        Set<List<Integer>> set = new HashSet<>();
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < len ; i++) {
-            for (int j = i + 1; j < len; j++) {
-                if (map.containsKey(0 - nums[i] - nums[j])) {
-                    List<Integer> tmp = new ArrayList<>();
-                    tmp.add(nums[i]);
-                    tmp.add(nums[j]);
-                    tmp.add(0 - nums[i] - nums[j]);
-                    tmp.sort(Comparator.naturalOrder());
-                    set.add(tmp);
-                }
-            }
-            map.put(nums[i], i);
+    public int[] levelOrder(TreeNode root) {
+        if (root == null) return new int[0];
+        List<Integer> list = new LinkedList<>();
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            list.add(node.val);
+            if (node.left != null) queue.add(node.left);
+            if (node.right != null) queue.add(node.right);
         }
-        return new ArrayList<>(set);
+        int[] res = new int[list.size()];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = list.get(i);
+        }
+        return res;
     }
 }
+

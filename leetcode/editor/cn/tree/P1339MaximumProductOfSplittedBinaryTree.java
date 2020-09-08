@@ -46,9 +46,7 @@
 // 👍 34 👎 0
 
 
-package editor.cn;
-
-import editor.cn.tree.TreeNode;
+package editor.cn.tree;
 
 //Java：分裂二叉树的最大乘积
 public class P1339MaximumProductOfSplittedBinaryTree{

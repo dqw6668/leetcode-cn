@@ -14,7 +14,7 @@
 // 👍 535 👎 0
 
 
-package editor.cn;
+package editor.cn.dp;
 //Java：最大正方形
 public class P221MaximalSquare{
     public static void main(String[] args) {

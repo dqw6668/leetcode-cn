@@ -34,7 +34,7 @@
 // 👍 347 👎 0
 
 
-package editor.cn;
+package editor.cn.BFS;
 
 import java.util.Deque;
 import java.util.LinkedList;
