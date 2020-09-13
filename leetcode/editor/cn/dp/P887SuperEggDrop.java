@@ -79,9 +79,9 @@ public class P887SuperEggDrop{
                 dp[i][0] = 0;
             }
             for (int i = 2; i <= K; i++) {
-                // 遍历所有N层楼
+                // i个鸡蛋面对有j层楼
                 for (int j = 2; j <= N; j++) {
-                    // 对求当前的楼层数，从第k层扔
+                    // 我要从哪里扔？对求当前的楼层数，从第k层扔
                     int l = 1, r = j;
                     while (l < r) {
                         int mid = l + (r - l + 1) / 2;
