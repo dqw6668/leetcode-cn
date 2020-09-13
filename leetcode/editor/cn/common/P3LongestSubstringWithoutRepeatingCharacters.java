@@ -41,6 +41,7 @@ public class P3LongestSubstringWithoutRepeatingCharacters{
         public int lengthOfLongestSubstring(String s) {
             int len = s.length();
             int res = 0;
+            // map里存上一个char出现的后一个位置的下标，即不重复子串的起始下标
             Map<Character, Integer> map = new HashMap<>();
             for (int i = 0, j = 0; i < len; i++) {
                 if(map.containsKey(s.charAt(i))) {

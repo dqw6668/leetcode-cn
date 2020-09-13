@@ -1,6 +1,9 @@
 package editor.cn;
 
 import java.util.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import editor.cn.tree.TreeNode;
 /**
  * Created by Five on 2020/8/27 19:04
@@ -9,54 +12,61 @@ public class Debug {
     public static void main(String[] args) {
         Solution solution = new Solution();
         Deque<TreeNode> queue = new ArrayDeque<>();
-        System.out.println(abs(Integer.MIN_VALUE));
-        System.out.println(abs(Integer.MAX_VALUE));
-        System.out.println(Math.abs(Integer.MIN_VALUE));
-        System.out.println(Math.abs(Integer.MAX_VALUE));
-    }
-    public static int abs(int x) {
-        // 拿到最高位符号位
-        if (x >>> 31 == 0) {
-            return x;
-        }
-        return ~x + 1;
+        int i = (int) (1e9 + 7);
+        System.out.println(i);
     }
 }
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
 class Solution {
-    public int[] levelOrder(TreeNode root) {
-        if (root == null) return new int[0];
-        List<Integer> list = new LinkedList<>();
-        Deque<TreeNode> queue = new ArrayDeque<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            list.add(node.val);
-            if (node.left != null) queue.add(node.left);
-            if (node.right != null) queue.add(node.right);
+    public String[] permutation(String s) {
+        char[] carry = s.toCharArray();
+        LinkedList<String> list = new LinkedList<>();
+        backTrack(list, s, 0, carry);
+        return list.toArray(new String[list.size()]);
+    }
+    private void backTrack(LinkedList<String> list, String s, int index, char[] carry) {
+        if (index == s.length()) {
+            list.add(new String(carry));
+            return;
         }
-        int[] res = new int[list.size()];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = list.get(i);
+        for (int i = index; i < s.length(); i++) {
+            swp(carry, i, index);
+            backTrack(list, s, i + 1, carry);
+            swp(carry, i, index);
         }
-        return res;
+    }
+
+    private void swp(char[] c, int i, int j) {
+        char tmp = c[i];
+        c[i] = c[j];
+        c[j] = tmp;
+    }
+}
+class Solution2 {
+    List<String> res = new LinkedList<>();
+    char[] c;
+    public String[] permutation(String s) {
+        c = s.toCharArray();
+        dfs(0);
+        return res.toArray(new String[res.size()]);
+    }
+    void dfs(int x) {
+        if(x == c.length - 1) {
+            res.add(String.valueOf(c));      // 添加排列方案
+            return;
+        }
+        HashSet<Character> set = new HashSet<>();
+        for(int i = x; i < c.length; i++) {
+            if(set.contains(c[i])) continue; // 重复，因此剪枝
+            set.add(c[i]);
+            swap(i, x);                      // 交换，将 c[i] 固定在第 x 位
+            dfs(x + 1);                      // 开启固定第 x + 1 位字符
+            swap(i, x);                      // 恢复交换
+        }
+    }
+    void swap(int a, int b) {
+        char tmp = c[a];
+        c[a] = c[b];
+        c[b] = tmp;
     }
 }
 
