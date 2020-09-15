@@ -75,5 +75,53 @@ public class P1371FindTheLongestSubstringContainingVowelsInEvenCounts {
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
-
+class Solution2 {
+    public int findTheLongestSubstring(String s) {
+        /*
+            5位二进制的整型[0,31]分别表示5个元音字母出现次数的奇偶
+            状态01001表示'a'与'o'出现了奇数次，其他3个元音字母出现了偶数次。
+            那么，当状态01001再次出现时，两次出现的下标之间的子串一定是符合要求的子串
+            即5个元音字母均出现了偶数次。（任何一个元音字母出现了奇数次都将改变此状态）
+            a: 00001
+            e: 00010
+            i: 00100
+            o: 01000
+            u: 10000
+         */
+        //用一个长度为32的数组记录左侧左侧字符状态最小下标。如
+        // lelacacd：
+        // 00000=-1（左侧全偶数个字符的开始位置为-1）,
+        // 00010=1（左侧奇数个e的开始位置为1）,
+        // 00011=3（左侧有奇数个e 奇数个a的开始位置为3）
+        int[] status = new int[1 << 5];
+        Arrays.fill(status, -10);
+        status[0] = -1;
+        int res = 0;
+        int curStatus = 0;
+        for (int i = 0; i < s.length(); i++) {
+            switch (s.charAt(i)) {
+                case 'a':
+                    curStatus ^= (1 << 0);
+                    break;
+                case 'e':
+                    curStatus ^= (1 << 1);
+                    break;
+                case 'i':
+                    curStatus ^= (1 << 2);
+                    break;
+                case 'o':
+                    curStatus ^= (1 << 3);
+                    break;
+                case 'u':
+                    curStatus ^= (1 << 4);
+                    break;
+            }
+            if (status[curStatus] != -10)
+                res = Math.max(res, i - status[curStatus]);
+            else
+                status[curStatus] = i;
+        }
+        return res;
+    }
+}
 }
