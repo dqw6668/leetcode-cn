@@ -26,9 +26,7 @@
 // 👍 595 👎 0
 
 
-package editor.cn;
-
-import editor.cn.tree.TreeNode;
+package editor.cn.tree;
 
 //Java：翻转二叉树
 public class P226InvertBinaryTree{

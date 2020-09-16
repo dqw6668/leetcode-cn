@@ -62,12 +62,10 @@
 // 👍 186 👎 0
 
 
-package editor.cn;
+package editor.cn.common;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
 
 //Java：逆波兰表达式求值
 public class P150EvaluateReversePolishNotation{
