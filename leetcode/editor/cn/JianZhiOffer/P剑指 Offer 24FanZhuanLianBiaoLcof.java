@@ -19,7 +19,9 @@
 // Related Topics 链表
 
 
-package editor.cn.List;
+package editor.cn.JianZhiOffer;
+
+import editor.cn.List.ListNode;
 
 //Java：反转链表
 class P24FanZhuanLianBiaoLcof {

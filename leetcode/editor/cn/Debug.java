@@ -1,16 +1,13 @@
 package editor.cn;
 
 import java.util.*;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
-import editor.cn.tree.TreeNode;
 /**
  * Created by Five on 2020/8/27 19:04
  */
 public class Debug {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        editor.cn.JianZhiOffer.Solution solution = new editor.cn.JianZhiOffer.Solution();
         System.out.println(solution.brokenCalc(5,8));
     }
 }

@@ -12,7 +12,7 @@
 // 👍 56 👎 0
 
 
-package editor.cn.twoPoint;
+package editor.cn.JianZhiOffer;
 
 import editor.cn.List.ListNode;
 
