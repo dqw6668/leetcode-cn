@@ -1,26 +1,39 @@
 package editor.cn;
 
 import java.util.*;
+import java.util.concurrent.Executors;
 
 /**
  * Created by Five on 2020/8/27 19:04
  */
 public class Debug {
     public static void main(String[] args) {
-        editor.cn.JianZhiOffer.Solution solution = new editor.cn.JianZhiOffer.Solution();
-        System.out.println(solution.brokenCalc(5,8));
+        Solution solution = new Solution();
+        solution.nextPermutation(new int[]{1,3,2});
     }
 }
 class Solution {
-    Map<Integer, Integer> map = new HashMap();
-    public int brokenCalc(int X, int Y) {
-        if (X <= Y/2) return (brokenCalc(2*X, Y) + 1);
-        if (X >= Y) return X - Y;
-        if (map.containsKey(X))
-            return map.get(X);
-        int res = Math.min(brokenCalc(2*X, Y), brokenCalc(X - 1, Y)) + 1;
-        map.put(X, res);
-        return res;
+    public void nextPermutation(int[] nums) {
+        int len = nums.length;
+        int index = -1;
+        for (int i = len - 1; i > 0; i--) {
+            if (nums[i - 1] < nums[i]) {
+                index = i - 1;
+                break;
+            }
+        }
+        if (index == -1) {
+            Arrays.sort(nums);
+            return;
+        }
+        for (int j = len - 1; j > index; j--) {
+            if (nums[j] > nums[index]) {
+                int tmp = nums[index];
+                nums[index] = nums[j];
+                nums[j] = tmp;
+            }
+        }
+        Arrays.sort(nums, index + 1, len);
     }
 }
 
