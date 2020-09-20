@@ -24,6 +24,8 @@
 
 package editor.cn.binarySearch;
 
+import java.util.Arrays;
+
 //Java：搜索旋转排序数组
 public class P33SearchInRotatedSortedArray {
     public static void main(String[] args) {
