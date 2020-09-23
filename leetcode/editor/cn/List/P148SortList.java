@@ -14,9 +14,7 @@
 // 👍 737 👎 0
 
 
-package editor.cn;
-
-import editor.cn.List.ListNode;
+package editor.cn.List;
 
 //Java：排序链表
 public class P148SortList{

@@ -34,7 +34,7 @@
 // 👍 769 👎 0
 
 
-package editor.cn;
+package editor.cn.BFS;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

@@ -35,9 +35,7 @@
 // 👍 756 👎 0
 
 
-package editor.cn;
-
-import editor.cn.tree.TreeNode;
+package editor.cn.tree;
 
 //Java：二叉树的最近公共祖先
 public class P236LowestCommonAncestorOfABinaryTree{

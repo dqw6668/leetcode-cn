@@ -24,9 +24,7 @@
 // 👍 637 👎 0
 
 
-package editor.cn;
-
-import editor.cn.tree.TreeNode;
+package editor.cn.tree;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

@@ -22,9 +22,7 @@
 // 👍 334 👎 0
 
 
-package editor.cn;
-
-import editor.cn.List.ListNode;
+package editor.cn.List;
 
 //Java：旋转链表
 public class P61RotateList{

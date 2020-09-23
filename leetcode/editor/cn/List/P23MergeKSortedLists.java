@@ -46,9 +46,7 @@
 // 👍 915 👎 0
 
 
-package editor.cn;
-
-import editor.cn.List.ListNode;
+package editor.cn.List;
 
 //Java：合并K个升序链表
 public class P23MergeKSortedLists{
