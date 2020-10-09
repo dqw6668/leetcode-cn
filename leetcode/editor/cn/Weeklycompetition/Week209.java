@@ -1,8 +1,8 @@
 package editor.cn.Weeklycompetition;
 
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Deque;
+import editor.cn.tree.TreeNode;
+
+import java.util.*;
 
 public class Week209 {
     public static void main(String[] args) {
@@ -46,5 +46,36 @@ class Week209Solution1 {
             else
                 return -1;
         }
+    }
+}
+class Week209Solution2 {
+    public boolean isEvenOddTree(TreeNode root) {
+        Deque<TreeNode> queue = new ArrayDeque<TreeNode>();
+        queue.add(root);
+        boolean isOdd = true;
+        while (!queue.isEmpty()) {
+            int sz = queue.size();
+            int pre = 0;
+            for (int i = 0; i < sz; i++) {
+                TreeNode cur = queue.poll();
+                if (isOdd) {
+                    if ((cur.val & 1) == 0)
+                        return false;
+                    if (i != 0 && pre >= cur.val)
+                        return false;
+                }
+                else {
+                    if ((cur.val & 1) == 1)
+                        return false;
+                    if (i != 0 && pre <= cur.val)
+                        return false;
+                }
+                pre = cur.val;
+                if (cur.left != null) queue.add(cur.left);
+                if (cur.right != null) queue.add(cur.right);
+            }
+            isOdd = !isOdd;
+        }
+        return true;
     }
 }
