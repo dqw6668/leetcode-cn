@@ -21,44 +21,45 @@ package editor.cn.tree;
 import java.util.*;
 
 //Java：二叉树的后序遍历
-public class P145BinaryTreePostorderTraversal{
+public class P145BinaryTreePostorderTraversal {
     public static void main(String[] args) {
         Solution solution = new P145BinaryTreePostorderTraversal().new Solution();
         // TO TEST
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> res = new LinkedList<>();
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            TreeNode cur = stack.pop();
-            res.add(cur.val);
-            if (cur.left != null)
-                stack.push(cur.left);
-            if (cur.right != null)
-                stack.push(cur.right);
+
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
+        public List<Integer> postorderTraversal(TreeNode root) {
+            List<Integer> res = new LinkedList<>();
+            Deque<TreeNode> stack = new ArrayDeque<>();
+            stack.push(root);
+            while (!stack.isEmpty()) {
+                TreeNode cur = stack.pop();
+                res.add(cur.val);
+                if (cur.left != null)
+                    stack.push(cur.left);
+                if (cur.right != null)
+                    stack.push(cur.right);
+            }
+            Collections.reverse(res);
+            return res;
         }
-        Collections.reverse(res);
-        return res;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
