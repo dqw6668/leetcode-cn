@@ -36,7 +36,7 @@
 // 👍 273 👎 0
 
 
-package editor.cn;
+package editor.cn.backtrack;
 
 import editor.cn.tree.TreeNode;
 
