@@ -25,7 +25,7 @@
 // 👍 323 👎 0
 
 
-package editor.cn;
+package editor.cn.BFS;
 //Java：岛屿的周长
 public class P463IslandPerimeter{
     public static void main(String[] args) {
